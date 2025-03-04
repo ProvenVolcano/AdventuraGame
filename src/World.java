@@ -1,12 +1,12 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class World {
 
     private HashMap<Integer, Room> rooms;
-    private int startingRoom;
     private int currentRoom;
 
     public World(String filename) {
@@ -15,8 +15,8 @@ public class World {
         try {
             BufferedReader br = new BufferedReader(new FileReader(filename));
 
-            while((br.readLine()) != null) {
-                String line = br.readLine();
+            String line;
+            while((line = br.readLine()) != null) {
                 Room room = new Room(line);
                 rooms.put(room.getID(), room);
             }
@@ -25,8 +25,42 @@ public class World {
             throw new RuntimeException(e);
         }
 
-        startingRoom = 1;
-        currentRoom = startingRoom;
+        currentRoom = 1;
+    }
 
+    public String neighbouringRooms(){
+        StringBuilder result = new StringBuilder();
+        ArrayList<Integer> idk = rooms.get(currentRoom).getConnections();
+
+        for(int i = 0; i < idk.size(); i++){
+            result.append(rooms.get(idk.get(i)).getID() + ". ").append(rooms.get(idk.get(i)).getName() + "\n");
+        }
+
+        return result.toString();
+    }
+
+    public String moveToRoom(int roomID) {
+        if(rooms.containsKey(roomID)) {
+            currentRoom = roomID;
+            return "Moved to " + rooms.get(currentRoom).getName();
+        }
+        return "No such room";
+
+    }
+
+    public HashMap<Integer, Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(HashMap<Integer, Room> rooms) {
+        this.rooms = rooms;
+    }
+
+    public int getCurrentRoom() {
+        return currentRoom;
+    }
+
+    public void setCurrentRoom(int currentRoom) {
+        this.currentRoom = currentRoom;
     }
 }
