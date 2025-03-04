@@ -40,11 +40,11 @@ public class World {
     }
 
     public String moveToRoom(int roomID) {
-        if(rooms.containsKey(roomID)) {
+        if(rooms.get(currentRoom).getConnections().contains(roomID) && rooms.containsKey(roomID)) {
             currentRoom = roomID;
             return "Moved to " + rooms.get(currentRoom).getName();
         }
-        return "No such room";
+        return "Can't move to that room";
 
     }
 

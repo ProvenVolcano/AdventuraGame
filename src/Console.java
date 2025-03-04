@@ -25,8 +25,13 @@ public class Console {
 
             System.out.print("> ");
             String command = sc.next();
-            System.out.println(commands.get(command).execute());
-            exit = commands.get(command).exit();
+
+            if(commands.containsKey(command)){
+                System.out.println(commands.get(command).execute());
+                exit = commands.get(command).exit();
+            } else {
+                System.out.println("No such command");
+            }
 
         } while (!exit);
     }

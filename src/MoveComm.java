@@ -13,8 +13,14 @@ public class MoveComm extends Command {
     @Override
     public String execute() {
         System.out.print("You can move to:\n" + world.neighbouringRooms() + "\n> ");
-        int newRoom = sc.nextInt();
-        return world.moveToRoom(newRoom);
+        String newRoom = sc.next();
+
+        try {
+            return world.moveToRoom(Integer.parseInt(newRoom));
+        } catch (Exception e) {
+            return "Invalid input, write only the number of the room you want to move to.";
+        }
+
     }
 
     @Override
