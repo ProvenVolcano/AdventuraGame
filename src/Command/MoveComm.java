@@ -1,4 +1,7 @@
+package Command;
+
 import java.util.Scanner;
+import World.World;
 
 public class MoveComm extends Command {
 
