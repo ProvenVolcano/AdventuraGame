@@ -1,16 +1,19 @@
+package World;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Room {
 
     private final int ID;
     private String name;
-    private ArrayList<Character> characters;
+    private HashMap<String, Character> characters;
     private ArrayList<Integer> connections;
 
     public Room(String roomString) {
 
         connections = new ArrayList<>();
-        characters = new ArrayList<>();
+        characters = new HashMap<>();
 
         String[] tokens = roomString.split(";");
         ID = Integer.parseInt(tokens[0]);
@@ -38,11 +41,11 @@ public class Room {
         this.name = name;
     }
 
-    public ArrayList<Character> getCharacters() {
+    public HashMap<String, Character> getCharacters() {
         return characters;
     }
 
-    public void setCharacters(ArrayList<Character> characters) {
+    public void setCharacters(HashMap<String, Character> characters) {
         this.characters = characters;
     }
 
