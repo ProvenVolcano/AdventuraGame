@@ -1,5 +1,8 @@
 package World;
 
+import Interactables.*;
+import Items.*;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -9,6 +12,8 @@ public class Room {
     private String name;
     private HashMap<String, Character> characters;
     private ArrayList<Integer> connections;
+    private HashMap<String, Item> items;
+    private HashMap<String, Interactable> interactables;
 
     public Room(String roomString) {
 

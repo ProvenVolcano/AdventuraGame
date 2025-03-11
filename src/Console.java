@@ -1,5 +1,5 @@
 import Command.*;
-import World.World;
+import World.*;
 
 import java.util.HashMap;
 import java.util.Scanner;
@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class Console {
 
     private World world;
+    private Player player;
     private HashMap<String, Command> commands;
     private boolean exit;
     private Scanner sc;
