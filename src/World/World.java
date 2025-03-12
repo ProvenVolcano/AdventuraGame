@@ -58,8 +58,8 @@ public class World {
         this.rooms = rooms;
     }
 
-    public int getCurrentRoom() {
-        return currentRoom;
+    public Room getCurrentRoom() {
+        return rooms.get(currentRoom);
     }
 
     public void setCurrentRoom(int currentRoom) {

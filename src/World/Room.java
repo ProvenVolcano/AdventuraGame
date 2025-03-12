@@ -1,16 +1,26 @@
 package World;
 
+import Interactables.*;
+import Items.*;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Room {
 
     private final int ID;
     private String name;
+    private HashMap<String, Character> characters;
     private ArrayList<Integer> connections;
+    private HashMap<String, Item> items;
+    private HashMap<String, Interactable> interactables;
 
     public Room(String roomString) {
 
         connections = new ArrayList<>();
+        characters = new HashMap<>();
+        items = new HashMap<>();
+        interactables = new HashMap<>();
 
         String[] tokens = roomString.split(";");
         ID = Integer.parseInt(tokens[0]);
@@ -24,6 +34,43 @@ public class Room {
                 System.out.println(e.getMessage());
             }
         }
+    }
+
+    public HashMap<String, Character> getCharacters() {
+        return characters;
+    }
+
+    public void setCharacters(HashMap<String, Character> characters) {
+        this.characters = characters;
+    }
+
+    public String getItemsString() {
+
+        StringBuilder string = new StringBuilder();
+
+        for (String name : items.keySet()){
+            string.append(name + "\n");
+        }
+
+        return string.toString();
+    }
+
+    public Item getItem(String item) {
+        Item i = items.get(item);
+        items.remove(item);
+        return i;
+    }
+
+    public void setItems(HashMap<String, Item> items) {
+        this.items = items;
+    }
+
+    public HashMap<String, Interactable> getInteractables() {
+        return interactables;
+    }
+
+    public void setInteractables(HashMap<String, Interactable> interactables) {
+        this.interactables = interactables;
     }
 
     public int getID() {

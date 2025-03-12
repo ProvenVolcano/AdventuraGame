@@ -24,6 +24,7 @@ public class Console {
         commands.put("move", new MoveComm(world));
         commands.put("exit", new ExitComm());
         commands.put("help", new HelpComm(commands));
+        commands.put("pick", new PickComm(world, player));
     }
 
     public void start(){
