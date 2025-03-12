@@ -15,12 +15,15 @@ public class Console {
     public Console() {
 
         world = new World("world.txt");
+        player = new Player();
 
         exit = false;
         sc = new Scanner(System.in);
 
         commands = new HashMap<>();
         commands.put("move", new MoveComm(world));
+        commands.put("exit", new ExitComm());
+        commands.put("help", new HelpComm(commands));
     }
 
     public void start(){

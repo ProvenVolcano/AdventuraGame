@@ -38,12 +38,6 @@ public class Room {
         this.name = name;
     }
 
-        return characters;
-    }
-
-        this.characters = characters;
-    }
-
     public ArrayList<Integer> getConnections() {
         return connections;
     }
