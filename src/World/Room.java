@@ -1,24 +1,16 @@
 package World;
 
-import Interactables.*;
-import Items.*;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Room {
 
     private final int ID;
     private String name;
-    private HashMap<String, Character> characters;
     private ArrayList<Integer> connections;
-    private HashMap<String, Item> items;
-    private HashMap<String, Interactable> interactables;
 
     public Room(String roomString) {
 
         connections = new ArrayList<>();
-        characters = new HashMap<>();
 
         String[] tokens = roomString.split(";");
         ID = Integer.parseInt(tokens[0]);
@@ -46,11 +38,9 @@ public class Room {
         this.name = name;
     }
 
-    public HashMap<String, Character> getCharacters() {
         return characters;
     }
 
-    public void setCharacters(HashMap<String, Character> characters) {
         this.characters = characters;
     }
 
