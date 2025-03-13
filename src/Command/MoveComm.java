@@ -16,7 +16,7 @@ public class MoveComm extends Command {
     @Override
     public String execute() {
         System.out.print("You can move to:\n" + world.neighbouringRooms() + "\n> ");
-        String newRoom = sc.next();
+        String newRoom = sc.nextLine();
 
         try {
             return world.moveToRoom(Integer.parseInt(newRoom));

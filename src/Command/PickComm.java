@@ -24,7 +24,7 @@ public class PickComm extends Command {
         }
 
         System.out.println(world.getCurrentRoom().getItemsString());
-        String item = sc.next();
+        String item = sc.nextLine();
 
         return player.addItem(world.getCurrentRoom().getItem(item));
     }

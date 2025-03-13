@@ -15,7 +15,7 @@ public class Room {
     private HashMap<String, Item> items;
     private HashMap<String, Interactable> interactables;
 
-    public Room(String roomString) {
+    public Room(String roomString, Player player) {
 
         connections = new ArrayList<>();
         characters = new HashMap<>();
@@ -34,6 +34,19 @@ public class Room {
                 System.out.println(e.getMessage());
             }
         }
+
+        try {
+            String[] itemString = tokens[3].split(",");
+            for (int i = 0; i < itemString.length; i++) {
+                try {
+                    items.put(itemString[i], Item.factory(itemString[i], player));
+                } catch (NumberFormatException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        } catch (Exception e) {
+            //System.out.println(e.getMessage());
+        }
     }
 
     public HashMap<String, Character> getCharacters() {
@@ -49,7 +62,7 @@ public class Room {
         StringBuilder string = new StringBuilder();
 
         for (String name : items.keySet()){
-            string.append(name + "\n");
+            string.append("    " + name + "\n");
         }
 
         return string.toString();

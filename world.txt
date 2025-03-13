@@ -1,6 +1,6 @@
-1;Player's room;3
+1;Player's room;3;Screw
 2;Captain's room;3
-3;Hallway;1,2,4,5
+3;Hallway;1,2,4,5;Laser Gun,Battery
 4;Infirmary;3
 5;Bridge;3,6,7,10
 6;Storage;5,7,10

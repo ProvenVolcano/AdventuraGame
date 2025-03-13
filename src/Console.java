@@ -14,8 +14,8 @@ public class Console {
 
     public Console() {
 
-        world = new World("world.txt");
         player = new Player();
+        world = new World("world.txt", player);
 
         exit = false;
         sc = new Scanner(System.in);
@@ -32,7 +32,7 @@ public class Console {
         do {
 
             System.out.print("> ");
-            String command = sc.next();
+            String command = sc.nextLine();
 
             if(commands.containsKey(command)){
                 System.out.println(commands.get(command).execute());

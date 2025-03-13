@@ -11,7 +11,7 @@ public class World {
     private HashMap<Integer, Room> rooms;
     private int currentRoom;
 
-    public World(String filename) {
+    public World(String filename, Player player) {
         rooms = new HashMap<>();
 
         try {
@@ -19,7 +19,7 @@ public class World {
 
             String line;
             while((line = br.readLine()) != null) {
-                Room room = new Room(line);
+                Room room = new Room(line, player);
                 rooms.put(room.getID(), room);
             }
 
@@ -35,7 +35,7 @@ public class World {
         ArrayList<Integer> idk = rooms.get(currentRoom).getConnections();
 
         for(int i = 0; i < idk.size(); i++){
-            result.append(rooms.get(idk.get(i)).getID() + ". ").append(rooms.get(idk.get(i)).getName() + "\n");
+            result.append("    " + rooms.get(idk.get(i)).getID() + ". ").append(rooms.get(idk.get(i)).getName() + "\n");
         }
 
         return result.toString();
