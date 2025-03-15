@@ -13,6 +13,6 @@ public class Bandages extends Item {
 
     @Override
     public String use() {
-        return "";
+        return name;
     }
 }

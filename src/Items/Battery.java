@@ -13,6 +13,6 @@ public class Battery extends Item {
 
     @Override
     public String use() {
-        return "";
+        return name;
     }
 }

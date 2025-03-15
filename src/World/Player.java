@@ -37,6 +37,24 @@ public class Player {
         return "Inventory full";
     }
 
+    public String itemsString() {
+        StringBuilder sb = new StringBuilder();
+
+        for(String item : items.keySet()){
+            sb.append("    " + item + "\n");
+        }
+        return sb.toString();
+    }
+
+    public String useItem(String item){
+        if(items.containsKey(item)){
+            Item i = items.get(item);
+            items.remove(item);
+            return i.use();
+        }
+        return "No such item in your inventory";
+    }
+
     public HashMap<String, Item> getItems() {
         return items;
     }

@@ -26,6 +26,7 @@ public class Console {
         commands.put("help", new HelpComm(commands));
         commands.put("pick", new PickComm(world, player));
         commands.put("interact", new InteractComm(world));
+        commands.put("use", new UseComm(player));
     }
 
     public void start(){

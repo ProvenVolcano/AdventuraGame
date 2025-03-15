@@ -19,7 +19,7 @@ public class LaserGun extends Item {
 
     @Override
     public String use() {
-        return "";
+        return name;
     }
 
 }
