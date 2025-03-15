@@ -12,14 +12,14 @@ public class Room {
     private String name;
     private HashMap<String, Character> characters;
     private ArrayList<Integer> connections;
-    private HashMap<String, Item> items;
+    private ArrayList<Item> items;
     private HashMap<String, Interactable> interactables;
 
     public Room(String roomString, Player player) {
 
         connections = new ArrayList<>();
         characters = new HashMap<>();
-        items = new HashMap<>();
+        items = new ArrayList<>();
         interactables = new HashMap<>();
 
         String[] tokens = roomString.split(";");
@@ -54,7 +54,7 @@ public class Room {
         String[] itemString = tokens[3].split(",");
         for (int i = 0; i < itemString.length; i++) {
             try {
-                items.put(itemString[i], Item.factory(itemString[i], player));
+                items.add(Item.factory(itemString[i], player));
             } catch (NumberFormatException e) {
                 System.out.println(e.getMessage());
             }
@@ -91,21 +91,21 @@ public class Room {
 
         StringBuilder string = new StringBuilder();
 
-        for (String name : items.keySet()){
-            string.append("    " + name + "\n");
+        for (Item item : items) {
+            string.append("    " + item.getName() + "\n");
         }
 
         return string.toString();
     }
 
     public Item getItem(String item) {
-        Item i = items.get(item);
-        items.remove(item);
-        return i;
-    }
-
-    public void setItems(HashMap<String, Item> items) {
-        this.items = items;
+        for(Item item1 : items){
+            if(item1.getName().equals(item)) {
+                items.remove(item1);
+                return item1;
+            }
+        }
+        return null;
     }
 
     public String getInteractablesString() {

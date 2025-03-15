@@ -2,17 +2,17 @@ package World;
 
 import Items.*;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class Player {
 
     private int health;
-    private HashMap<String, Item> items;
+    private ArrayList<Item> items;
     private final int INVENTORY_CAP;
 
     public Player() {
         health = 100;
-        items = new HashMap<>();
+        items = new ArrayList<>();
         INVENTORY_CAP = 7;
     }
 
@@ -21,7 +21,10 @@ public class Player {
     }
 
     public void setHealth(int health) {
-        this.health = health;
+        this.health += health;
+        if (this.health > 100) {
+            this.health = 100;
+        }
     }
 
     public String addItem(Item item){
@@ -31,7 +34,7 @@ public class Player {
         }
 
         if(items.size() < INVENTORY_CAP){
-            items.put(item.getName(), item);
+            items.add(item);
             return item.getName() + " added to inventory";
         }
         return "Inventory full";
@@ -40,22 +43,19 @@ public class Player {
     public String itemsString() {
         StringBuilder sb = new StringBuilder();
 
-        for(String item : items.keySet()){
-            sb.append("    " + item + "\n");
+        for(Item item : items){
+            sb.append("    " + item.getName() + "\n");
         }
         return sb.toString();
     }
 
     public String useItem(String item){
-        if(items.containsKey(item)){
-            Item i = items.get(item);
-            items.remove(item);
-            return i.use();
+        for(Item item1 : items){
+            if(item1.getName().equals(item)){
+                items.remove(item1);
+                return item1.use();
+            }
         }
         return "No such item in your inventory";
-    }
-
-    public HashMap<String, Item> getItems() {
-        return items;
     }
 }

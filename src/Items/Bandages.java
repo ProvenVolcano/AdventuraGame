@@ -13,6 +13,7 @@ public class Bandages extends Item {
 
     @Override
     public String use() {
-        return name;
+        player.setHealth(player.getHealth() + 25);
+        return "Health now " + player.getHealth() + "/100";
     }
 }

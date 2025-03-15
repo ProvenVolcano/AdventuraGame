@@ -1,7 +1,7 @@
-1;Player's room;3;Screw; ;
+1;Player's room;3;Screw,Bandages; ;
 2;Captain's room;3; ; ;
 3;Hallway;1,2,4,5;Laser Gun,Battery;PP;
-4;Infirmary;3; ; ;
+4;Infirmary;3;Bandages,Bandages; ;
 5;Bridge;3,6,7,10; ; ;
 6;Storage;5,7,10; ;Battery.Bandages,Cog.Battery.Screw;
 7;Dock;5,6,10; ;Shuttle;
