@@ -8,6 +8,7 @@ public class Player {
 
     private int health;
     private ArrayList<Item> items;
+    private LaserGun gun;
     private final int INVENTORY_CAP;
 
     public Player() {
@@ -33,6 +34,11 @@ public class Player {
             return "No such item";
         }
 
+        if(item.getName().equals("Laser Gun")){
+            gun = new LaserGun();
+            return "You now have a Laser Gun!";
+        }
+
         if(items.size() < INVENTORY_CAP){
             items.add(item);
             return item.getName() + " added to inventory";
@@ -51,11 +57,19 @@ public class Player {
 
     public String useItem(String item){
         for(Item item1 : items){
-            if(item1.getName().equals(item)){
-                items.remove(item1);
-                return item1.use();
+            if(item1.getName().equals(item)) {
+
+                String useMessage = item1.use();
+                if(item1.isOneTimeUse()){
+                    items.remove(item1);
+                }
+                return useMessage;
             }
         }
         return "No such item in your inventory";
+    }
+
+    public LaserGun getGun() {
+        return gun;
     }
 }

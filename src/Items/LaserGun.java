@@ -7,14 +7,15 @@ public class LaserGun extends Item {
     public LaserGun() {
         power = 100;
         name = "Laser Gun";
+        oneTimeUse = false;
     }
 
     public int getPower() {
         return power;
     }
 
-    public void setPower(int power) {
-        this.power = power;
+    public void reload() {
+        power = 100;
     }
 
     @Override

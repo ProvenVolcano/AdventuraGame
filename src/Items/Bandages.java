@@ -8,6 +8,7 @@ public class Bandages extends Item {
 
     public Bandages(Player player) {
         this.player = player;
+        oneTimeUse = true;
         name = "Bandages";
     }
 

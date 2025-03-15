@@ -5,11 +5,16 @@ import World.Player;
 public abstract class Item {
 
     protected String name;
+    protected boolean oneTimeUse;
 
     public abstract String use();
 
     public String getName() {
         return name;
+    }
+
+    public boolean isOneTimeUse() {
+        return oneTimeUse;
     }
 
     public static Item factory(String name, Player player){
