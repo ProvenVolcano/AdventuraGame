@@ -14,6 +14,7 @@ public class Room {
     private ArrayList<Integer> connections;
     private HashMap<String, Item> items;
     private HashMap<String, Interactable> interactables;
+    private String message;
 
     public Room(String roomString, Player player) {
 

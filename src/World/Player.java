@@ -2,7 +2,6 @@ package World;
 
 import Items.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Player {
