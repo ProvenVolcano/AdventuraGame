@@ -70,7 +70,8 @@ public class Room {
         String[] interactableString = tokens[4].split(",");
         for (int i = 0; i < interactableString.length; i++) {
             try {
-                interactables.put(interactableString[i], Interactable.factory(interactableString[i], player));
+                Interactable temp = Interactable.factory(interactableString[i], player);
+                interactables.put(temp.getName(), temp);
             } catch (NumberFormatException e) {
                 System.out.println(e.getMessage());
             }
@@ -105,6 +106,16 @@ public class Room {
 
     public void setItems(HashMap<String, Item> items) {
         this.items = items;
+    }
+
+    public String getInteractablesString() {
+        StringBuilder string = new StringBuilder();
+
+        for (String name : interactables.keySet()){
+            string.append("    " + name + "\n");
+        }
+
+        return string.toString();
     }
 
     public HashMap<String, Interactable> getInteractables() {

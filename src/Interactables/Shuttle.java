@@ -8,10 +8,11 @@ public class Shuttle extends Interactable {
 
     public Shuttle(Player player) {
         this.player = player;
+        name = "Shuttle";
     }
 
     @Override
     public String interact() {
-        return "";
+        return name;
     }
 }

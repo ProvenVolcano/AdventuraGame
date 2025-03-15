@@ -8,10 +8,11 @@ public class Core extends Interactable {
 
     public Core(Player player) {
         this.player = player;
+        name = "Power Core";
     }
 
     @Override
     public String interact() {
-        return "";
+        return name;
     }
 }

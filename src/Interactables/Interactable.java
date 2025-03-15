@@ -16,4 +16,8 @@ public abstract class Interactable {
             default -> new Crate(name, player);
         };
     }
+
+    public String getName() {
+        return name;
+    }
 }

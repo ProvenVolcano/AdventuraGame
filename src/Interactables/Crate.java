@@ -11,6 +11,7 @@ public class Crate extends Interactable {
 
     public Crate(String items, Player player) {
         this.player = player;
+        name = "Crate";
 
         String[] itemsArray = items.split("\\.");
         this.items = new HashMap<>();
@@ -21,6 +22,6 @@ public class Crate extends Interactable {
 
     @Override
     public String interact() {
-        return "";
+        return items.keySet().toString();
     }
 }
