@@ -29,6 +29,7 @@ public class Room {
         createConnections(tokens);
         createItems(tokens, player);
         createInteractables(tokens, player);
+        createCharacters(tokens);
     }
 
     private void createConnections(String[] tokens) {
@@ -79,8 +80,33 @@ public class Room {
 
     }
 
-    public HashMap<String, Character> getCharacters() {
-        return characters;
+    private void createCharacters(String[] tokens) {
+        if(tokens[5].isBlank()){
+            return;
+        }
+
+        String[] characterString = tokens[5].split(",");
+        for (int i = 0; i < characterString.length; i++) {
+            Character c = new Character(characterString[i]);
+            characters.put(c.getName(), c);
+        }
+    }
+
+    public String talkToCharacter(String name) {
+        if(characters.containsKey(name)){
+            return characters.get(name).talk();
+        }
+        return "No such person in this room";
+    }
+
+    public String getCharactersString() {
+        StringBuilder string = new StringBuilder();
+
+        for (String name : characters.keySet()){
+            string.append("    " + name + "\n");
+        }
+
+        return string.toString();
     }
 
     public void setCharacters(HashMap<String, Character> characters) {
