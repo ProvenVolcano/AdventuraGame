@@ -9,6 +9,6 @@ public class Component extends Item {
 
     @Override
     public String use() {
-        return name;
+        return "Can't use this item now";
     }
 }

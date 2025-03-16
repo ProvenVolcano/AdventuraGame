@@ -20,6 +20,10 @@ public class LaserGun extends Item {
 
     @Override
     public String use() {
+        if(power < 20){
+            return "Not enough power";
+        }
+        power -= 20;
         return name;
     }
 
