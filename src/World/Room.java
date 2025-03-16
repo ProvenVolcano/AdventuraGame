@@ -1,5 +1,6 @@
 package World;
 
+import Characters.Character;
 import Interactables.*;
 import Items.*;
 
@@ -10,7 +11,7 @@ public class Room {
 
     private final int ID;
     private String name;
-    private HashMap<String, Character> characters;
+    private HashMap<String, Characters.Character> characters;
     private ArrayList<Integer> connections;
     private ArrayList<Item> items;
     private HashMap<String, Interactable> interactables;
@@ -87,8 +88,10 @@ public class Room {
 
         String[] characterString = tokens[5].split(",");
         for (int i = 0; i < characterString.length; i++) {
-            Character c = new Character(characterString[i]);
-            characters.put(c.getName(), c);
+            Characters.Character c = Character.factory(characterString[i]);
+            if(c != null){
+                characters.put(c.getName(), c);
+            }
         }
     }
 

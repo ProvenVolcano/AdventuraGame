@@ -1,2 +1,5 @@
 Doctor
-woof
+1:Oh! Hello! I'm happy to see that I'm not the only one alive here.
+1:One of the aliens tried to kill me, but I was able to defend myself and I managed to strangle him with some bandages.
+1:I still have some here, if you need them, don't hesitate to ask!
+2:Do you need bandages?
