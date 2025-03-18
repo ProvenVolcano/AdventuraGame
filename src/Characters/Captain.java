@@ -8,6 +8,14 @@ public class Captain extends Character {
 
     @Override
     public String talk() {
-        return "";
+        switch (dialogIndex){
+            case 0:
+                dialogIndex++;
+                return dialogs.get(0);
+            case 1:
+                return dialogs.get(1);
+            default:
+                return "";
+        }
     }
 }

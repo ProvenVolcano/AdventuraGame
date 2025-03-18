@@ -14,7 +14,7 @@ public class Player {
     private final int INVENTORY_CAP;
 
     public Player() {
-        health = 100;
+        health = 101;
         fighting = false;
         alive = true;
         items = new ArrayList<>();

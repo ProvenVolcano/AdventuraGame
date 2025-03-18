@@ -193,10 +193,14 @@ public class Room {
 
         player.setFighting(alien != null);
 
-        if(rd.nextBoolean()){
+        if(rd.nextInt(4) == 0 && player.getHealth() <= 100) {
             alien = new Alien();
             player.setFighting(true);
             ret += "\nTHERE IS AN ALIEN! QUICK, SHOOT HIM!";
+        }
+
+        if(player.getHealth() > 100) {
+            player.setHealth(100);
         }
 
         return ret;
@@ -208,7 +212,7 @@ public class Room {
 
     public String shootAlien(int dmg) {
         if(alien == null){
-            return "Phew!";
+            return "Phew!\n";
         }
 
         if(alien.damage(dmg)){
