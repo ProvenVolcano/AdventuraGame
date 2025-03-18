@@ -85,11 +85,12 @@ public class Player {
         return items.size() < INVENTORY_CAP;
     }
 
-    public void remove(String item) {
+    public boolean remove(String item) {
         for(int i = 0; i < items.size(); i++) {
             if (items.get(i).getName().equals(item)) {
-                items.remove(items.get(i));
+                return items.remove(items.get(i));
             }
         }
+        return false;
     }
 }

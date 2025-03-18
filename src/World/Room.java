@@ -151,6 +151,10 @@ public class Room {
         return string.toString();
     }
 
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
     public HashMap<String, Interactable> getInteractables() {
         return interactables;
     }

@@ -29,6 +29,7 @@ public class Console {
         commands.put("use", new UseComm(player));
         commands.put("shoot", new ShootComm(world, player));
         commands.put("talk", new TalkComm(world));
+        commands.put("throw", new ThrowComm(player, world));
     }
 
     public void start(){
