@@ -9,10 +9,14 @@ public class Player {
     private int health;
     private ArrayList<Item> items;
     private LaserGun gun;
+    private boolean fighting;
+    private boolean alive;
     private final int INVENTORY_CAP;
 
     public Player() {
         health = 100;
+        fighting = false;
+        alive = true;
         items = new ArrayList<>();
         INVENTORY_CAP = 15;
     }
@@ -48,6 +52,7 @@ public class Player {
 
     public String itemsString() {
         StringBuilder sb = new StringBuilder();
+        sb.append("Inventory (" + items.size() + "/" + INVENTORY_CAP + "):\n");
 
         for(Item item : items){
             sb.append("    " + item.getName() + "\n");
@@ -92,5 +97,33 @@ public class Player {
             }
         }
         return false;
+    }
+
+    public String damage(int dmg) {
+        health -= dmg;
+        alive = health > 0;
+        if(alive){
+            return "The alien shot you! Your health is now " + health + "/100!";
+        } else return "The alien shot you!\nYou died...";
+    }
+
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
+    public boolean isFighting() {
+        return fighting;
+    }
+
+    public void setFighting(boolean fighting) {
+        this.fighting = fighting;
+    }
+
+    public boolean isAlive() {
+        return alive;
+    }
+
+    public void setAlive(boolean alive) {
+        this.alive = alive;
     }
 }

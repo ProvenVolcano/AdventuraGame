@@ -1,21 +1,27 @@
 package Command;
 
-import World.World;
+import World.*;
 
 import java.util.Scanner;
 
 public class InteractComm extends Command {
 
     private World world;
+    private Player player;
     private Scanner sc;
 
-    public InteractComm(World world) {
+    public InteractComm(World world, Player player) {
         this.world = world;
+        this.player = player;
         sc = new Scanner(System.in);
     }
 
     @Override
     public String execute() {
+        if(player.isFighting()){
+            return "Can't execute command while fighting an enemy\n" + player.damage(15);
+        }
+
         if(world.getCurrentRoom().getInteractablesString().isEmpty()){
             return "Nothing to interact with in this room";
         }

@@ -19,11 +19,15 @@ public class ThrowComm extends Command {
 
     @Override
     public String execute() {
-        if(player.itemsString().isEmpty()){
+        if(player.isFighting()){
+            return "Can't execute command while fighting an enemy\n" + player.damage(15);
+        }
+
+        if(player.getItems().isEmpty()){
             return "No items in inventory";
         }
 
-        System.out.println("Inventory:\n" + player.itemsString());
+        System.out.println(player.itemsString());
         System.out.print("Item to remove: ");
         String item = sc.nextLine();
         if(player.remove(item)){

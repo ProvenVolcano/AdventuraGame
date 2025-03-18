@@ -1,6 +1,6 @@
 package Items;
 
-import World.Player;
+import World.*;
 
 public abstract class Item {
 

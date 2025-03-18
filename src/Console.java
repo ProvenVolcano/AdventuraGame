@@ -21,17 +21,17 @@ public class Console {
         sc = new Scanner(System.in);
 
         commands = new HashMap<>();
-        commands.put("move", new MoveComm(world));
+        commands.put("move", new MoveComm(world, player));
         commands.put("exit", new ExitComm());
         commands.put("help", new HelpComm(commands));
         commands.put("pick", new PickComm(world, player));
-        commands.put("interact", new InteractComm(world));
+        commands.put("interact", new InteractComm(world, player));
         commands.put("use", new UseComm(player));
         commands.put("shoot", new ShootComm(world, player));
-        commands.put("talk", new TalkComm(world));
+        commands.put("talk", new TalkComm(world, player));
         commands.put("throw", new ThrowComm(player, world));
         commands.put("reload", new ChangeComm(player));
-        commands.put("open", new OpenComm(world));
+        commands.put("open", new OpenComm(world, player));
     }
 
     public void start(){
@@ -48,6 +48,6 @@ public class Console {
                 System.out.println("No such command");
             }
 
-        } while (!exit);
+        } while (!exit && player.isAlive());
     }
 }

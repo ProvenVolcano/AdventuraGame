@@ -17,11 +17,11 @@ public class UseComm extends Command {
     @Override
     public String execute() {
 
-        if(player.itemsString().isEmpty()){
+        if(player.getItems().isEmpty()){
             return "No items in inventory";
         }
 
-        System.out.println("Inventory:\n" + player.itemsString());
+        System.out.println(player.itemsString());
         String item = sc.nextLine();
         return player.useItem(item);
     }

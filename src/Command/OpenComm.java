@@ -1,6 +1,6 @@
 package Command;
 
-import World.World;
+import World.*;
 
 import java.util.Scanner;
 
@@ -8,14 +8,20 @@ public class OpenComm extends Command {
 
     private World world;
     private Scanner sc;
+    private Player player;
 
-    public OpenComm(World world) {
+    public OpenComm(World world, Player player) {
+        this.player = player;
         this.world = world;
         sc = new Scanner(System.in);
     }
 
     @Override
     public String execute() {
+        if(player.isFighting()){
+            return "Can't execute command while fighting an enemy\n" + player.damage(15);
+        }
+
         System.out.println(world.getCurrentRoom().cratesString());
         System.out.print("Crate to open: ");
         String crate = sc.nextLine();

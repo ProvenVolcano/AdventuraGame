@@ -38,8 +38,7 @@ public abstract class Character {
             }
             dialogs.add(dialog.toString());
 
-        }catch (IOException e){
-            System.out.println("Error reading character file");
+        } catch (IOException _){
         }
     }
 

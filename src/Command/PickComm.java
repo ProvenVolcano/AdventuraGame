@@ -18,6 +18,12 @@ public class PickComm extends Command {
 
     @Override
     public String execute() {
+        if(player.isFighting()){
+            System.out.println(player.damage(30));
+            if(!player.isAlive()){
+                return "";
+            }
+        }
 
         if(world.getCurrentRoom().getItemsString().isEmpty()){
             return "No items in this room";

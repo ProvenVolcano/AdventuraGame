@@ -1,22 +1,27 @@
 package World;
 
+import Characters.Alien;
 import Characters.Character;
 import Interactables.*;
 import Items.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 public class Room {
 
     private final int ID;
     private String name;
+    private boolean open;
     private HashMap<String, Characters.Character> characters;
     private ArrayList<Integer> connections;
     private ArrayList<Item> items;
     private HashMap<String, Interactable> interactables;
     private ArrayList<Crate> crates;
     private Player player;
+    private Alien alien;
+    private Random rd;
 
     public Room(String roomString, Player player) {
 
@@ -26,10 +31,12 @@ public class Room {
         interactables = new HashMap<>();
         crates = new ArrayList<>();
         this.player = player;
+        rd = new Random();
 
         String[] tokens = roomString.split(";");
         ID = Integer.parseInt(tokens[0]);
         name = tokens[1];
+        open = Boolean.parseBoolean(tokens[7]);
 
         createConnections(tokens);
         createItems(tokens);
@@ -181,6 +188,37 @@ public class Room {
         return string.toString();
     }
 
+    public String entered(){
+        String ret = moveMessage();
+
+        player.setFighting(alien != null);
+
+        if(rd.nextBoolean()){
+            alien = new Alien();
+            player.setFighting(true);
+            ret += "\nTHERE IS AN ALIEN! QUICK, SHOOT HIM!";
+        }
+
+        return ret;
+    }
+
+    private String moveMessage() {
+        return "Moved";
+    }
+
+    public String shootAlien(int dmg) {
+        if(alien == null){
+            return "Phew!";
+        }
+
+        if(alien.damage(dmg)){
+            return "You shot the alien, it's still alive!\n";
+        }
+        player.setFighting(false);
+        alien = null;
+        return "You shot the alien, he died!\n";
+    }
+
     public ArrayList<Item> getItems() {
         return items;
     }
@@ -211,5 +249,13 @@ public class Room {
 
     public void setConnections(ArrayList<Integer> connections) {
         this.connections = connections;
+    }
+
+    public void setOpen(boolean open) {
+        this.open = open;
+    }
+
+    public boolean isOpen() {
+        return open;
     }
 }

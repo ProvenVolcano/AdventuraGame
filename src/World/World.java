@@ -42,9 +42,9 @@ public class World {
     }
 
     public String moveToRoom(int roomID) {
-        if(rooms.get(currentRoom).getConnections().contains(roomID) && rooms.containsKey(roomID)) {
+        if(rooms.get(currentRoom).getConnections().contains(roomID) && rooms.containsKey(roomID) && rooms.get(roomID).isOpen()) {
             currentRoom = roomID;
-            return "Moved to " + rooms.get(currentRoom).getName();
+            return rooms.get(currentRoom).entered();
         }
         return "Can't move to that room";
 
