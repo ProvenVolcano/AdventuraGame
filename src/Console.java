@@ -31,6 +31,7 @@ public class Console {
         commands.put("talk", new TalkComm(world));
         commands.put("throw", new ThrowComm(player, world));
         commands.put("reload", new ChangeComm(player));
+        commands.put("open", new OpenComm(world));
     }
 
     public void start(){

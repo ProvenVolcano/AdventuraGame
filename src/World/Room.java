@@ -15,6 +15,7 @@ public class Room {
     private ArrayList<Integer> connections;
     private ArrayList<Item> items;
     private HashMap<String, Interactable> interactables;
+    private ArrayList<Crate> crates;
     private Player player;
 
     public Room(String roomString, Player player) {
@@ -23,6 +24,7 @@ public class Room {
         characters = new HashMap<>();
         items = new ArrayList<>();
         interactables = new HashMap<>();
+        crates = new ArrayList<>();
         this.player = player;
 
         String[] tokens = roomString.split(";");
@@ -33,6 +35,7 @@ public class Room {
         createItems(tokens);
         createInteractables(tokens);
         createCharacters(tokens);
+        createCrates(tokens);
     }
 
     private void createConnections(String[] tokens) {
@@ -95,6 +98,33 @@ public class Room {
                 characters.put(c.getName(), c);
             }
         }
+    }
+
+    private void createCrates(String[] tokens) {
+        if(tokens[6].isBlank()){
+            return;
+        }
+
+        String[] cratesString = tokens[6].split(",");
+        for (int i = 0; i < cratesString.length; i++) {
+            try {
+                crates.add(new Crate(cratesString[i], player));
+            } catch (NumberFormatException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    public String cratesString() {
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < crates.size(); i++) {
+            sb.append((i + 1) + ". " + crates.get(i).getName() + "\n");
+        }
+        return sb.toString();
+    }
+
+    public ArrayList<Crate> getCrates() {
+        return crates;
     }
 
     public String talkToCharacter(String name) {
