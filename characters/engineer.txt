@@ -1,2 +1,10 @@
 Engineer
-arg
+1:Help! I'm here! I was trying to repair the power core, when one of these aliens shot me.
+1:I think I have a broken leg. If we don't want to die here, we'll have to repair the core,
+1:give me something to heal my leg, and I will tell you what to do.
+2:Heal me, and I will tell you what to do to repair the core.
+3:Thank you! Now that I'm fine, we can start the repair. A lot of the parts were damaged,
+3:so we'll need to find new ones. We need:
+4:We still need:
+5:You found them all! Great! I still can't get up, so you'll have to repair the core yourself.
+5:Just follow my instructions.

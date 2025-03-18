@@ -1,5 +1,7 @@
 package Characters;
 
+import World.Player;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -13,7 +15,7 @@ public abstract class Character {
 
     public Character(String fileName) {
         dialogs = new ArrayList<>();
-        dialogIndex = -1;
+        dialogIndex = 0;
 
         try{
             BufferedReader br = new BufferedReader(new FileReader("characters\\" + fileName + ".txt"));
@@ -30,7 +32,7 @@ public abstract class Character {
                     dialogs.add(dialog.toString());
                     prevNum = line.charAt(0);
                     dialog = new StringBuilder();
-                    dialog.append(line.substring(2) + "\n");
+                    dialog.append(line.substring(2));
                 }
 
             }
@@ -47,10 +49,10 @@ public abstract class Character {
         return name;
     }
 
-    public static Character factory(String name) {
+    public static Character factory(String name, Player player) {
         return switch (name){
-            case "doctor" -> new Doctor(name);
-            case "engineer" -> new Engineer(name);
+            case "doctor" -> new Doctor(name, player);
+            case "engineer" -> new Engineer(name, player);
             case "captain" -> new Captain(name);
             case "firstOfficer" -> new FirstOfficer(name);
             case "alienCaptain" -> new AlienCaptain(name);

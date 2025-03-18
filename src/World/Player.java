@@ -14,7 +14,7 @@ public class Player {
     public Player() {
         health = 100;
         items = new ArrayList<>();
-        INVENTORY_CAP = 7;
+        INVENTORY_CAP = 15;
     }
 
     public int getHealth() {
@@ -43,7 +43,7 @@ public class Player {
             items.add(item);
             return item.getName() + " added to inventory";
         }
-        return "Inventory full";
+        return "Cannot take " + item.getName() + " - inventory is full";
     }
 
     public String itemsString() {
@@ -69,7 +69,27 @@ public class Player {
         return "No such item in your inventory";
     }
 
+    public boolean containsItem(String item){
+        for(Item item1 : items) {
+            if (item1.getName().equalsIgnoreCase(item)) {
+                return true;
+            }
+        } return false;
+    }
+
     public LaserGun getGun() {
         return gun;
+    }
+
+    public boolean inventoryFree(){
+        return items.size() < INVENTORY_CAP;
+    }
+
+    public void remove(String item) {
+        for(int i = 0; i < items.size(); i++) {
+            if (items.get(i).getName().equals(item)) {
+                items.remove(items.get(i));
+            }
+        }
     }
 }

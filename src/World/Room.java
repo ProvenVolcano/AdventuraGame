@@ -15,6 +15,7 @@ public class Room {
     private ArrayList<Integer> connections;
     private ArrayList<Item> items;
     private HashMap<String, Interactable> interactables;
+    private Player player;
 
     public Room(String roomString, Player player) {
 
@@ -22,14 +23,15 @@ public class Room {
         characters = new HashMap<>();
         items = new ArrayList<>();
         interactables = new HashMap<>();
+        this.player = player;
 
         String[] tokens = roomString.split(";");
         ID = Integer.parseInt(tokens[0]);
         name = tokens[1];
 
         createConnections(tokens);
-        createItems(tokens, player);
-        createInteractables(tokens, player);
+        createItems(tokens);
+        createInteractables(tokens);
         createCharacters(tokens);
     }
 
@@ -48,7 +50,7 @@ public class Room {
         }
     }
 
-    private void createItems(String[] tokens, Player player) {
+    private void createItems(String[] tokens) {
         if(tokens[3].isBlank()){
             return;
         }
@@ -64,7 +66,7 @@ public class Room {
 
     }
 
-    private void createInteractables(String[] tokens, Player player) {
+    private void createInteractables(String[] tokens) {
         if(tokens[4].isBlank()){
             return;
         }
@@ -88,7 +90,7 @@ public class Room {
 
         String[] characterString = tokens[5].split(",");
         for (int i = 0; i < characterString.length; i++) {
-            Characters.Character c = Character.factory(characterString[i]);
+            Characters.Character c = Character.factory(characterString[i], player);
             if(c != null){
                 characters.put(c.getName(), c);
             }
@@ -130,7 +132,9 @@ public class Room {
     public Item getItem(String item) {
         for(Item item1 : items){
             if(item1.getName().equals(item)) {
-                items.remove(item1);
+                if(player.inventoryFree()){
+                    items.remove(item1);
+                }
                 return item1;
             }
         }
