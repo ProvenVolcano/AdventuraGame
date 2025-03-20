@@ -1,6 +1,8 @@
 package Command;
 
 import java.util.Scanner;
+
+import Colors.Text;
 import World.*;
 
 public class MoveComm extends Command {
@@ -27,7 +29,7 @@ public class MoveComm extends Command {
         try {
             return world.moveToRoom(Integer.parseInt(newRoom));
         } catch (NumberFormatException e) {
-            return "Invalid input, write only the number of the room you want to move to.";
+            return Text.color("Invalid input, write only the number of the room you want to move to.", 'r');
         }
 
     }

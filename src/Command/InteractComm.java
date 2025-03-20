@@ -1,5 +1,6 @@
 package Command;
 
+import Colors.Text;
 import World.*;
 
 import java.util.Scanner;
@@ -19,11 +20,11 @@ public class InteractComm extends Command {
     @Override
     public String execute() {
         if(player.isFighting()){
-            return "Can't execute command while fighting an enemy\n" + player.damage(15);
+            return Text.color("Can't execute command while fighting an enemy\n" + player.damage(15), 'r');
         }
 
         if(world.getCurrentRoom().getInteractablesString().isEmpty()){
-            return "Nothing to interact with in this room";
+            return Text.color("Nothing to interact with in this room", 'y');
         }
 
         System.out.println(world.getCurrentRoom().getInteractablesString());
@@ -32,7 +33,7 @@ public class InteractComm extends Command {
         try {
             return world.getCurrentRoom().getInteractables().get(obj).interact();
         } catch (Exception e) {
-            return "No such object";
+            return Text.color("No such object", 'r');
         }
     }
 

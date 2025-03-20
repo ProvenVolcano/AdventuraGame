@@ -1,5 +1,6 @@
 package Command;
 
+import Colors.*;
 import World.Player;
 
 import java.util.Scanner;
@@ -18,7 +19,7 @@ public class UseComm extends Command {
     public String execute() {
 
         if(player.getItems().isEmpty()){
-            return "No items in inventory";
+            return Text.color("No items in inventory", 'r');
         }
 
         System.out.println(player.itemsString());

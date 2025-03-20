@@ -1,5 +1,6 @@
 package Command;
 
+import Colors.Text;
 import World.*;
 
 import java.util.Random;
@@ -19,7 +20,7 @@ public class ShootComm extends Command {
     @Override
     public String execute() {
         if(player.getGun() == null){
-            return "You don't have anything to shoot with";
+            return Text.color("You don't have anything to shoot with", 'y');
         }
 
         String ret = "";
@@ -27,7 +28,7 @@ public class ShootComm extends Command {
             if(player.isFighting()){
                 ret += player.damage(15);
             }
-            return "Not enough power!\n" + ret;
+            return ret + Text.color("Not enough power!", 'r');
         }
         ret += world.getCurrentRoom().shootAlien(rd.nextInt(15) + 20);
         ret += player.getGun().use();

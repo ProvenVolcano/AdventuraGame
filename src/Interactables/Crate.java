@@ -3,6 +3,7 @@ package Interactables;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Colors.Text;
 import Items.*;
 import World.Player;
 
@@ -27,7 +28,7 @@ public class Crate extends Interactable {
     @Override
     public String interact() {
         if(items.isEmpty()) {
-            return "Crate empty";
+            return Text.color("Crate empty", 'r');
         }
 
         System.out.println(name + " contains:" + "\n" + this);
@@ -38,11 +39,11 @@ public class Crate extends Interactable {
         String ret;
         try {
             if(!player.inventoryFree()){
-                return "Inventory full";
+                return Text.color("Inventory full", 'o');
             }
             ret = player.addItem(items.get(Integer.parseInt(item) - 1));
         } catch (NumberFormatException e) {
-            return "Enter only the number of the item";
+            return Text.color("Enter only the number of the item", 'r');
         }
         items.remove(Integer.parseInt(item) - 1);
         return ret;
@@ -52,7 +53,7 @@ public class Crate extends Interactable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < items.size(); i++) {
-            sb.append("    " + (i + 1) + ". " + items.get(i).getName() + "\n");
+            sb.append("    " + (i + 1) + ". " + Text.color(items.get(i).getName(), items.get(i).getColor()) + "\n");
         }
         return sb.toString();
     }

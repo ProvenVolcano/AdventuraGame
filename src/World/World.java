@@ -1,5 +1,7 @@
 package World;
 
+import Colors.*;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -46,7 +48,7 @@ public class World {
             currentRoom = roomID;
             return rooms.get(currentRoom).entered();
         }
-        return "Can't move to that room";
+        return Text.color("Can't move to that room", 'r');
 
     }
 

@@ -1,5 +1,6 @@
 package Command;
 
+import Colors.*;
 import Items.Item;
 import World.*;
 
@@ -20,11 +21,11 @@ public class ThrowComm extends Command {
     @Override
     public String execute() {
         if(player.isFighting()){
-            return "Can't execute command while fighting an enemy\n" + player.damage(15);
+            return Text.color("Can't execute command while fighting an enemy\n" + player.damage(15), 'r');
         }
 
         if(player.getItems().isEmpty()){
-            return "No items in inventory";
+            return Text.color("No items in inventory", 'r');
         }
 
         System.out.println(player.itemsString());
@@ -34,7 +35,7 @@ public class ThrowComm extends Command {
             world.getCurrentRoom().getItems().add(Item.factory(item, player));
             return item + " removed from inventory";
         }
-        return "Not such item in your inventory";
+        return Text.color("Not such item in your inventory", 'r');
     }
 
     @Override

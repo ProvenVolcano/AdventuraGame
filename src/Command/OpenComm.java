@@ -1,5 +1,6 @@
 package Command;
 
+import Colors.Text;
 import World.*;
 
 import java.util.Scanner;
@@ -19,7 +20,7 @@ public class OpenComm extends Command {
     @Override
     public String execute() {
         if(player.isFighting()){
-            return "Can't execute command while fighting an enemy\n" + player.damage(15);
+            return Text.color("Can't execute command while fighting an enemy\n" + player.damage(15), 'r');
         }
 
         System.out.println(world.getCurrentRoom().cratesString());
@@ -30,7 +31,7 @@ public class OpenComm extends Command {
         try {
             ret = world.getCurrentRoom().getCrates().get(Integer.parseInt(crate) - 1).interact();
         } catch (Exception e) {
-            return "Enter only the number of the crate";
+            return Text.color("Enter only the number of the crate", 'r');
         }
         return ret;
     }

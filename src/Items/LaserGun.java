@@ -1,5 +1,7 @@
 package Items;
 
+import Colors.*;
+
 public class LaserGun extends Item {
 
     private int power;
@@ -7,6 +9,7 @@ public class LaserGun extends Item {
     public LaserGun() {
         power = 100;
         name = "Laser Gun";
+        color = 'r';
         oneTimeUse = false;
     }
 
@@ -21,7 +24,7 @@ public class LaserGun extends Item {
     @Override
     public String use() {
         power -= 20;
-        return "Laser gun power is now " + power + "/100\n";
+        return Text.color("Laser gun power is now " + power + "/100\n", 'o');
     }
 
 }

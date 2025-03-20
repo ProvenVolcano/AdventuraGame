@@ -1,5 +1,6 @@
 package Command;
 
+import Colors.Text;
 import World.Player;
 
 public class ChangeComm extends Command {
@@ -13,7 +14,7 @@ public class ChangeComm extends Command {
     @Override
     public String execute() {
         if(!player.containsItem("Battery")){
-            return "You don't have a battery";
+            return Text.color("You don't have a battery", 'r');
         }
         return player.useItem("Battery");
     }

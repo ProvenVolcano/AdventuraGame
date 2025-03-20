@@ -2,6 +2,7 @@ package World;
 
 import Characters.Alien;
 import Characters.Character;
+import Colors.Text;
 import Interactables.*;
 import Items.*;
 
@@ -138,7 +139,7 @@ public class Room {
         if(characters.containsKey(name)){
             return characters.get(name).talk();
         }
-        return "No such person in this room";
+        return Text.color("No such person in this room", 'r');
     }
 
     public String getCharactersString() {
@@ -160,7 +161,7 @@ public class Room {
         StringBuilder string = new StringBuilder();
 
         for (Item item : items) {
-            string.append("    " + item.getName() + "\n");
+            string.append("    " + Text.color(item.getName(), item.getColor()) + "\n");
         }
 
         return string.toString();
@@ -193,34 +194,30 @@ public class Room {
 
         player.setFighting(alien != null);
 
-        if(rd.nextInt(4) == 0 && player.getHealth() <= 100) {
+        if(rd.nextInt(3) == 0 && ID != 3) {
             alien = new Alien();
             player.setFighting(true);
-            ret += "\nTHERE IS AN ALIEN! QUICK, SHOOT HIM!";
-        }
-
-        if(player.getHealth() > 100) {
-            player.setHealth(100);
+            ret += Text.color("\nTHERE IS AN ALIEN! QUICK, SHOOT HIM!", 'p');
         }
 
         return ret;
     }
 
     private String moveMessage() {
-        return "Moved";
+        return Text.color("Moved", 'g');
     }
 
     public String shootAlien(int dmg) {
         if(alien == null){
-            return "Phew!\n";
+            return Text.color("Phew!\n", 'o');
         }
 
         if(alien.damage(dmg)){
-            return "You shot the alien, it's still alive!\n";
+            return Text.color("You shot the alien, it's still alive!\n", 'y');
         }
         player.setFighting(false);
         alien = null;
-        return "You shot the alien, he died!\n";
+        return Text.color("You shot the alien, he died!\n", 'g');
     }
 
     public ArrayList<Item> getItems() {

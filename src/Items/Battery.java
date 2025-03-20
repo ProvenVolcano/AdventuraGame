@@ -1,5 +1,6 @@
 package Items;
 
+import Colors.Text;
 import World.Player;
 
 public class Battery extends Item {
@@ -10,6 +11,7 @@ public class Battery extends Item {
         this.player = player;
         oneTimeUse = true;
         name = "Battery";
+        color = 'y';
     }
 
     @Override
@@ -18,15 +20,15 @@ public class Battery extends Item {
 
         if(player.getGun() == null){
             oneTimeUse = false;
-            return "Can't use this item now";
+            return Text.color("Can't use this item now", 'y');
         }
 
         if(player.getGun().getPower() == 100) {
             oneTimeUse = false;
-            return "Laser Gun power already full";
+            return Text.color("Laser Gun power already full", 'y');
         }
 
         player.getGun().reload();
-        return "Laser Gun battery changed";
+        return Text.color("Laser Gun battery changed", 'g');
     }
 }

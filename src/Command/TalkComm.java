@@ -1,5 +1,6 @@
 package Command;
 
+import Colors.Text;
 import World.*;
 
 import java.util.Scanner;
@@ -19,11 +20,11 @@ public class TalkComm extends Command {
     @Override
     public String execute() {
         if(player.isFighting()){
-            return "Can't execute command while fighting an enemy\n" + player.damage(15);
+            return Text.color("Can't execute command while fighting an enemy\n" + player.damage(15), 'r');
         }
 
         if(world.getCurrentRoom().getCharactersString().isEmpty()){
-            return "No one to talk to in this room";
+            return Text.color("No one to talk to in this room", 'y');
         }
 
         System.out.println(world.getCurrentRoom().getCharactersString());

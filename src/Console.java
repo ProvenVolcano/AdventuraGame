@@ -1,3 +1,4 @@
+import Colors.Text;
 import Command.*;
 import World.*;
 
@@ -45,7 +46,7 @@ public class Console {
                 System.out.println(commands.get(command).execute());
                 exit = commands.get(command).exit();
             } else {
-                System.out.println("No such command");
+                System.out.println(Text.color("No such command", 'r'));
             }
 
         } while (!exit && player.isAlive());

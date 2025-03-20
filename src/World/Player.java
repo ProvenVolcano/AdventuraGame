@@ -1,5 +1,6 @@
 package World;
 
+import Colors.Text;
 import Items.*;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class Player {
     private final int INVENTORY_CAP;
 
     public Player() {
-        health = 101;
+        health = 100;
         fighting = false;
         alive = true;
         items = new ArrayList<>();
@@ -35,19 +36,19 @@ public class Player {
     public String addItem(Item item){
 
         if(item == null){
-            return "No such item";
+            return Text.color("No such item", 'r');
         }
 
         if(item.getName().equals("Laser Gun")){
             gun = new LaserGun();
-            return "You now have a Laser Gun!";
+            return Text.color("You now have a Laser Gun!", 'g');
         }
 
         if(items.size() < INVENTORY_CAP){
             items.add(item);
-            return item.getName() + " added to inventory";
+            return Text.color(item.getName() + " added to inventory", 'g');
         }
-        return "Cannot take " + item.getName() + " - inventory is full";
+        return Text.color("Cannot take \" + item.getName() + \" - inventory is full", 'y');
     }
 
     public String itemsString() {
@@ -55,7 +56,7 @@ public class Player {
         sb.append("Inventory (" + items.size() + "/" + INVENTORY_CAP + "):\n");
 
         for(Item item : items){
-            sb.append("    " + item.getName() + "\n");
+            sb.append("    " + Text.color(item.getName(), item.getColor()) + "\n");
         }
         return sb.toString();
     }
@@ -71,7 +72,7 @@ public class Player {
                 return useMessage;
             }
         }
-        return "No such item in your inventory";
+        return Text.color("No such item in your inventory", 'r');
     }
 
     public boolean containsItem(String item){
@@ -102,9 +103,10 @@ public class Player {
     public String damage(int dmg) {
         health -= dmg;
         alive = health > 0;
+        String ret = Text.color("The alien shot you!\n", 'p');
         if(alive){
-            return "The alien shot you! Your health is now " + health + "/100!";
-        } else return "The alien shot you!\nYou died...";
+            return ret + Text.color("Your health is now " + health + "/100!", 'o');
+        } else return ret + Text.color("\nYou died...", 'd');
     }
 
     public ArrayList<Item> getItems() {

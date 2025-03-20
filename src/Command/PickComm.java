@@ -1,5 +1,6 @@
 package Command;
 
+import Colors.Text;
 import World.*;
 
 import java.util.Scanner;
@@ -19,14 +20,11 @@ public class PickComm extends Command {
     @Override
     public String execute() {
         if(player.isFighting()){
-            System.out.println(player.damage(30));
-            if(!player.isAlive()){
-                return "";
-            }
+            return Text.color("Can't execute command while fighting an enemy\n" + player.damage(15), 'r');
         }
 
         if(world.getCurrentRoom().getItemsString().isEmpty()){
-            return "No items in this room";
+            return Text.color("No items in this room", 'r');
         }
 
         System.out.println(world.getCurrentRoom().getItemsString());
