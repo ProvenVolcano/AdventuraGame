@@ -50,5 +50,6 @@ public class Console {
             }
 
         } while (!exit && player.isAlive());
+        sc.close();
     }
 }

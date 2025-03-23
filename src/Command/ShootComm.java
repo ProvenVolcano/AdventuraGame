@@ -25,10 +25,11 @@ public class ShootComm extends Command {
 
         String ret = "";
         if(player.getGun().getPower() < 20){
+            ret += Text.color("Not enough power!", 'r');
             if(player.isFighting()){
                 ret += player.damage(15);
             }
-            return ret + Text.color("Not enough power!", 'r');
+            return ret;
         }
         ret += world.getCurrentRoom().shootAlien(rd.nextInt(15) + 20);
         ret += player.getGun().use();

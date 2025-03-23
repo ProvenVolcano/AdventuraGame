@@ -15,6 +15,8 @@ public class Room {
     private final int ID;
     private String name;
     private boolean open;
+    private int password;
+    private int passPanelLocID;
     private HashMap<String, Characters.Character> characters;
     private ArrayList<Integer> connections;
     private ArrayList<Item> items;
@@ -38,6 +40,11 @@ public class Room {
         ID = Integer.parseInt(tokens[0]);
         name = tokens[1];
         open = Boolean.parseBoolean(tokens[7]);
+
+        if(!open) {
+            password = rd.nextInt(9000)+1000;
+            passPanelLocID = Integer.parseInt(tokens[7]);
+        }
 
         createConnections(tokens);
         createItems(tokens);
@@ -190,9 +197,12 @@ public class Room {
     }
 
     public String entered(){
+        player.setFighting(alien != null);
         String ret = moveMessage();
 
-        player.setFighting(alien != null);
+        if(alien != null){
+            return ret + Text.color("\nTHERE IS AN ALIEN! QUICK, SHOOT HIM!", 'p');
+        }
 
         if(rd.nextInt(3) == 0 && ID != 3) {
             alien = new Alien();
@@ -258,5 +268,17 @@ public class Room {
 
     public boolean isOpen() {
         return open;
+    }
+
+    public HashMap<String, Character> getCharacters() {
+        return characters;
+    }
+
+    public int getPassword() {
+        return password;
+    }
+
+    public int getPassPanelLocID() {
+        return passPanelLocID;
     }
 }

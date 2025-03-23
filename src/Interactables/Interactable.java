@@ -11,7 +11,6 @@ public abstract class Interactable {
         return switch (name) {
             case "CS" -> new ControlStation();
             case "Core" -> new Core(player);
-            case "PP" -> new PassPanel();
             case "Shuttle" -> new Shuttle(player);
             default -> new Crate(name, player);
         };

@@ -1,6 +1,7 @@
 package World;
 
 import Colors.*;
+import Interactables.PassPanel;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -15,6 +16,7 @@ public class World {
 
     public World(String filename, Player player) {
         rooms = new HashMap<>();
+        ArrayList<Room> lockedRooms = new ArrayList<>();
 
         try {
             BufferedReader br = new BufferedReader(new FileReader(filename));
@@ -23,10 +25,19 @@ public class World {
             while((line = br.readLine()) != null) {
                 Room room = new Room(line, player);
                 rooms.put(room.getID(), room);
+
+                if(!room.isOpen()) {
+                    lockedRooms.add(room);
+                }
             }
 
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+
+        for(Room r : lockedRooms) {
+            rooms.get(r.getPassPanelLocID()).getInteractables().put("Password Panel", new PassPanel(r));
+            rooms.get(6).getCharacters().get("First Officer").setPassword(r.getPassword());
         }
 
         currentRoom = 1;

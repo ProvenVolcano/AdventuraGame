@@ -12,6 +12,7 @@ public abstract class Character {
     protected String name;
     protected ArrayList<String> dialogs;
     protected int dialogIndex;
+    protected int password;
 
     public Character(String fileName) {
         dialogs = new ArrayList<>();
@@ -27,7 +28,7 @@ public abstract class Character {
             while((line = br.readLine()) != null) {
 
                 if(line.charAt(0) == prevNum) {
-                    dialog.append(line.substring(2) + "\n");
+                    dialog.append(line.substring(2)).append("\n");
                 } else {
                     dialogs.add(dialog.toString());
                     prevNum = line.charAt(0);
@@ -36,6 +37,7 @@ public abstract class Character {
                 }
 
             }
+            br.close();
             dialogs.add(dialog.toString());
 
         } catch (IOException _){
@@ -48,12 +50,22 @@ public abstract class Character {
         return name;
     }
 
+    public void setPassword(int pass) {
+        this.password = pass;
+
+        for(int i = 0; i < dialogs.size(); i++) {
+            if(dialogs.get(i).contains("#")){
+                dialogs.set(i, dialogs.get(i).replace("#", pass + ""));
+            }
+        }
+    }
+
     public static Character factory(String name, Player player) {
         return switch (name){
             case "doctor" -> new Doctor(name, player);
             case "engineer" -> new Engineer(name, player);
             case "captain" -> new Captain(name);
-            case "firstOfficer" -> new FirstOfficer(name);
+            case "firstOfficer" -> new FirstOfficer(name, player);
             case "alienCaptain" -> new AlienCaptain(name);
             default -> null;
         };
