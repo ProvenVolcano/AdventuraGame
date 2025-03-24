@@ -10,12 +10,14 @@ public class Player {
     private int health;
     private ArrayList<Item> items;
     private LaserGun gun;
+    private boolean fixedCore;
     private boolean fighting;
     private boolean alive;
     private final int INVENTORY_CAP;
 
     public Player() {
         health = 100;
+        fixedCore = false;
         fighting = false;
         alive = true;
         items = new ArrayList<>();
@@ -127,5 +129,13 @@ public class Player {
 
     public void setAlive(boolean alive) {
         this.alive = alive;
+    }
+
+    public boolean isFixedCore() {
+        return fixedCore;
+    }
+
+    public void setFixedCore(boolean fixedCore) {
+        this.fixedCore = fixedCore;
     }
 }

@@ -9,7 +9,7 @@ public abstract class Interactable {
 
     public static Interactable factory(String name, Player player) {
         return switch (name) {
-            case "CS" -> new ControlStation();
+            case "CS" -> new ControlStation(player);
             case "Core" -> new Core(player);
             case "Shuttle" -> new Shuttle(player);
             default -> new Crate(name, player);
