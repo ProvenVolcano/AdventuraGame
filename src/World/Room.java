@@ -23,10 +23,11 @@ public class Room {
     private HashMap<String, Interactable> interactables;
     private ArrayList<Crate> crates;
     private Player player;
+    private World world;
     private Alien alien;
     private Random rd;
 
-    public Room(String roomString, Player player) {
+    public Room(String roomString, Player player, World world) {
 
         connections = new ArrayList<>();
         characters = new HashMap<>();
@@ -34,6 +35,7 @@ public class Room {
         interactables = new HashMap<>();
         crates = new ArrayList<>();
         this.player = player;
+        this.world = world;
         rd = new Random();
 
         String[] tokens = roomString.split(";");
@@ -92,7 +94,7 @@ public class Room {
         String[] interactableString = tokens[4].split(",");
         for (int i = 0; i < interactableString.length; i++) {
             try {
-                Interactable temp = Interactable.factory(interactableString[i], player);
+                Interactable temp = Interactable.factory(interactableString[i], player, world);
                 interactables.put(temp.getName(), temp);
             } catch (NumberFormatException e) {
                 System.out.println(e.getMessage());

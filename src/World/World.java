@@ -23,7 +23,7 @@ public class World {
 
             String line;
             while((line = br.readLine()) != null) {
-                Room room = new Room(line, player);
+                Room room = new Room(line, player, this);
                 rooms.put(room.getID(), room);
 
                 if(!room.isOpen()) {

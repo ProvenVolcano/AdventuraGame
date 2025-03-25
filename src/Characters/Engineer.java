@@ -14,7 +14,7 @@ public class Engineer extends Character {
         super(file);
         this.player = player;
         neededItems = new ArrayList<>();
-        Collections.addAll(neededItems, "Screwdriver", "Blue cable");
+        Collections.addAll(neededItems, "Screwdriver", "Blue cable", "Chip", "Yellow cable", "Red cable");
     }
 
     @Override
@@ -33,6 +33,7 @@ public class Engineer extends Character {
             case 3:
                 if (hasAll()) {
                     dialogIndex++;
+                    player.setHasEngineerItems(true);
                 } else return dialogs.get(3) + neededItemsString() + ".";
             case 4:
                 return dialogs.get(4);

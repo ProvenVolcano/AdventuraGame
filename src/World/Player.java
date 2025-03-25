@@ -10,6 +10,7 @@ public class Player {
     private int health;
     private ArrayList<Item> items;
     private LaserGun gun;
+    private boolean hasEngineerItems;
     private boolean fixedCore;
     private boolean fighting;
     private boolean alive;
@@ -17,11 +18,12 @@ public class Player {
 
     public Player() {
         health = 100;
+        hasEngineerItems = false;
         fixedCore = false;
         fighting = false;
         alive = true;
         items = new ArrayList<>();
-        INVENTORY_CAP = 15;
+        INVENTORY_CAP = 8;
     }
 
     public int getHealth() {
@@ -137,5 +139,13 @@ public class Player {
 
     public void setFixedCore(boolean fixedCore) {
         this.fixedCore = fixedCore;
+    }
+
+    public boolean isHasEngineerItems() {
+        return hasEngineerItems;
+    }
+
+    public void setHasEngineerItems(boolean hasEngineerItems) {
+        this.hasEngineerItems = hasEngineerItems;
     }
 }
