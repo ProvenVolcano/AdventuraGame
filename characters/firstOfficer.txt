@@ -6,10 +6,11 @@ First Officer
 2:Do you have any medicine? My whole body hurts from hiding in these crates.
 3:Thanks, I feel much better. The captain was abducted and the aliens demand we give them the files about our secret mission.
 3:We can't let the captain die, since I am now in command of the ship, I say we give it to them.
-3:They are in the captain's room. Some of the aliens might still be here and I am much higher ranking than you,
+3:They are in the captain's room. Some of the aliens might still be here, and I am much higher ranking than you,
 3:so can you go get them for me? The password to the captain's room is #.
 3:The files are classified so don't look in them!
 3:I'll just... hide in one of these crates until you come back.
 4:Bring me the files.
-5:Great, now we need to deliver them to the alien ship. Use the shuttle in the dock to get to the alien ship.
+5:Great, now we need to deliver them to the alien ship.
+5:You should probably contact the alien captain first though. Then use the shuttle in the dock to get to the alien ship.
 6:Use the shuttle in the dock to get to the alien ship.

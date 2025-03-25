@@ -37,10 +37,11 @@ public class World {
             throw new RuntimeException(e);
         }
 
-        for(Room r : lockedRooms) {
-            rooms.get(r.getPassPanelLocID()).getInteractables().put("Password Panel", new PassPanel(r));
-            rooms.get(6).getCharacters().get("First Officer").setPassword(r.getPassword());
+        for (Room lockedRoom : lockedRooms) {
+            rooms.get(lockedRoom.getPassPanelLocID()).getInteractables().put("Password Panel", new PassPanel(lockedRoom));
         }
+        rooms.get(6).getCharacters().get("First Officer").setPassword(lockedRooms.get(0).getPassword());
+        rooms.get(5).getInteractables().get("Control Station").setPassword(lockedRooms.get(1).getPassword());
 
         currentRoom = 1;
     }

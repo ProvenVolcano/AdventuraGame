@@ -1,2 +1,4 @@
 Alien Captain
-1:placeholder text
+1:MUHAHAHAHA! I have your captain, if you want to see him alive, give me the files!
+2:Alright, it's a deal! Bring the files to my ship, and I will let you take your captain back.
+3:The password to his prison cell is #. Good luck...

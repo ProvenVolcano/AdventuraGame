@@ -66,7 +66,7 @@ public abstract class Character {
             case "engineer" -> new Engineer(name, player);
             case "captain" -> new Captain(name, player);
             case "firstOfficer" -> new FirstOfficer(name, player);
-            case "alienCaptain" -> new AlienCaptain(name);
+            case "alienCaptain" -> new AlienCaptain(name, player);
             default -> null;
         };
     }

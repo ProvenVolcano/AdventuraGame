@@ -17,7 +17,7 @@ public class ControlStation extends Interactable {
     public ControlStation(Player player) {
         sc = new Scanner(System.in);
         this.player = player;
-        alienCaptain = new AlienCaptain("alienCaptain");
+        alienCaptain = new AlienCaptain("alienCaptain", player);
         name = "Control Station";
         scheme = new Scheme();
     }
@@ -38,5 +38,11 @@ public class ControlStation extends Interactable {
             default:
                 return Text.color("No such option", 'r');
         }
+    }
+
+    @Override
+    public void setPassword(int password) {
+        super.setPassword(password);
+        alienCaptain.setPassword(password);
     }
 }

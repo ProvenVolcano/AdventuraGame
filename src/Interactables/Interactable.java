@@ -5,6 +5,8 @@ import World.*;
 public abstract class Interactable {
 
     protected String name;
+    protected int password;
+
     public abstract String interact();
 
     public static Interactable factory(String name, Player player, World world) {
@@ -18,5 +20,9 @@ public abstract class Interactable {
 
     public String getName() {
         return name;
+    }
+
+    public void setPassword(int password) {
+        this.password = password;
     }
 }

@@ -1,9 +1,14 @@
 package Characters;
 
+import World.Player;
+
 public class AlienCaptain extends Character {
 
-    public AlienCaptain(String fileName) {
+    Player player;
+
+    public AlienCaptain(String fileName, Player player) {
         super(fileName);
+        this.player = player;
     }
 
     @Override
@@ -13,7 +18,13 @@ public class AlienCaptain extends Character {
                 dialogIndex++;
                 return dialogs.get(0);
             case 1:
-                return dialogs.get(1);
+                if(player.containsItem("Files")){
+                    dialogIndex++;
+                    return dialogs.get(1) + "\n" + dialogs.get(2);
+                }
+                return dialogs.get(0);
+            case 2:
+                return dialogs.get(2);
             default:
                 return "";
         }
