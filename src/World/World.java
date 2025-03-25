@@ -12,10 +12,12 @@ import java.util.HashMap;
 public class World {
 
     private HashMap<Integer, Room> rooms;
+    private Player player;
     private int currentRoom;
 
     public World(String filename, Player player) {
         rooms = new HashMap<>();
+        this.player = player;
         ArrayList<Room> lockedRooms = new ArrayList<>();
 
         try {
@@ -55,6 +57,11 @@ public class World {
     }
 
     public String moveToRoom(int roomID) {
+        if(roomID == 7 && player.isSavedCaptain()) {
+            player.setAlive(false);
+            return Text.color("Congratulations! You completed the game", 'c');
+        }
+
         if(rooms.get(currentRoom).getConnections().contains(roomID) && rooms.containsKey(roomID) && rooms.get(roomID).isOpen()) {
             currentRoom = roomID;
             return rooms.get(currentRoom).entered();

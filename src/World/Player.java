@@ -14,6 +14,7 @@ public class Player {
     private boolean fixedCore;
     private boolean fighting;
     private boolean alive;
+    private boolean savedCaptain;
     private final int INVENTORY_CAP;
 
     public Player() {
@@ -21,6 +22,7 @@ public class Player {
         hasEngineerItems = false;
         fixedCore = false;
         fighting = false;
+        savedCaptain = false;
         alive = true;
         items = new ArrayList<>();
         INVENTORY_CAP = 8;
@@ -147,5 +149,13 @@ public class Player {
 
     public void setHasEngineerItems(boolean hasEngineerItems) {
         this.hasEngineerItems = hasEngineerItems;
+    }
+
+    public boolean isSavedCaptain() {
+        return savedCaptain;
+    }
+
+    public void setSavedCaptain(boolean savedCaptain) {
+        this.savedCaptain = savedCaptain;
     }
 }

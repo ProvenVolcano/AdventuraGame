@@ -21,7 +21,7 @@ public class Core extends Interactable {
 
     @Override
     public String interact() {
-        if(!player.isHasEngineerItems()){
+        if(player.isHasEngineerItems()){
             return Text.color("You don't have all the items needed for repair!", 'r');
         }
 
@@ -50,7 +50,8 @@ public class Core extends Interactable {
                 Engineer:
                 Okay, listen very carefully, we only have one shot at this, if you mess up, it could blow up the whole ship.
                 In front of you there should be a panel with nine screws with numbers next to them.
-                You need to screw out only those I tell you, in the exact order I tell you.""");
+                You need to screw out only those I tell you, in the exact order I tell you.\n
+                """);
 
         try {
             Thread.sleep(5000);
@@ -72,10 +73,11 @@ public class Core extends Interactable {
             throw new RuntimeException(e);
         }
 
-        System.out.print("First, take out the one with the highest number whose digits are the same.\n> ");
+        System.out.println("First, take out the one with the highest number whose digits are the same.");
         String screw1;
 
         do {
+            System.out.print("> ");
             screw1 = sc.nextLine();
 
             if(!screw1.equals("88")) {
@@ -88,11 +90,12 @@ public class Core extends Interactable {
 
         } while (!screw1.equals("88"));
 
-        System.out.print("Great! Next, the one next to the previous one, whose number is furthest away it.\n> ");
+        System.out.println("Great! Next, the one next to the previous one, whose number is furthest away it.");
 
         String screw2;
 
         do {
+            System.out.print("> ");
             screw2 = sc.nextLine();
 
             if(!screw2.equals("23")) {
@@ -104,11 +107,12 @@ public class Core extends Interactable {
             }
         } while (!screw2.equals("23"));
 
-        System.out.print("Just 2 more to go! Now, screw out the one on the opposite column, but on the same row as the previous one.\n> ");
+        System.out.println("Just 2 more to go! Now, screw out the one on the opposite column, but on the same row as the previous one.");
 
         String screw3;
 
         do {
+            System.out.print("> ");
             screw3 = sc.nextLine();
 
             if(!screw3.equals("51")) {
@@ -120,11 +124,12 @@ public class Core extends Interactable {
             }
         } while (!screw3.equals("51"));
 
-        System.out.println("Last one! Screw out the one whose number is divisible by 10.\n> ");
+        System.out.println("Last one! Screw out the one whose number is divisible by 10.");
 
         String screw4;
 
         do {
+            System.out.print("> ");
             screw4 = sc.nextLine();
 
             if(!screw4.equals("60")) {
@@ -160,7 +165,7 @@ public class Core extends Interactable {
                                        32  :5
                 """);
 
-        System.out.println("You should see 3 ports for cables on the left and 5 on the right");
+        System.out.println("You should see 3 ports for cables on the left and 5 on the right\n");
         System.out.println(scheme);
 
         try {
@@ -174,7 +179,7 @@ public class Core extends Interactable {
                 with the ones on the right, which are in the normal decimal system.
                 """);
 
-        System.out.print("For the input, write the number of the ports, first the left one, separated by a dash, for example: 3-5");
+        System.out.println("(For the input, write the number of the ports, first the left one, separated by a dash, for example: 3-5)");
 
         String input;
         while(!cables.isEmpty()) {

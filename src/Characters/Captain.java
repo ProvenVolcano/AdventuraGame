@@ -1,21 +1,19 @@
 package Characters;
 
+import World.Player;
+
 public class Captain extends Character {
 
-    public Captain(String fileName) {
+    Player player;
+
+    public Captain(String fileName, Player player) {
         super(fileName);
+        this.player = player;
     }
 
     @Override
     public String talk() {
-        switch (dialogIndex){
-            case 0:
-                dialogIndex++;
-                return dialogs.get(0);
-            case 1:
-                return dialogs.get(1);
-            default:
-                return "";
-        }
+        player.setSavedCaptain(true);
+        return dialogs.get(0);
     }
 }

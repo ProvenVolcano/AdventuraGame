@@ -26,6 +26,7 @@ public class Room {
     private World world;
     private Alien alien;
     private Random rd;
+    private int chance;
 
     public Room(String roomString, Player player, World world) {
 
@@ -42,6 +43,7 @@ public class Room {
         ID = Integer.parseInt(tokens[0]);
         name = tokens[1];
         open = Boolean.parseBoolean(tokens[7]);
+        chance = Integer.parseInt(tokens[8]);
 
         if(!open) {
             password = rd.nextInt(9000)+1000;
@@ -206,7 +208,7 @@ public class Room {
             return ret + Text.color("\nTHERE IS AN ALIEN! QUICK, SHOOT HIM!", 'p');
         }
 
-        if(rd.nextInt(3) == 0 && ID != 3) {
+        if(rd.nextInt(10) < chance) {
             alien = new Alien();
             player.setFighting(true);
             ret += Text.color("\nTHERE IS AN ALIEN! QUICK, SHOOT HIM!", 'p');
@@ -216,7 +218,7 @@ public class Room {
     }
 
     private String moveMessage() {
-        return Text.color("Moved", 'g');
+        return Text.color("Moved to " + name, 'g');
     }
 
     public String shootAlien(int dmg) {

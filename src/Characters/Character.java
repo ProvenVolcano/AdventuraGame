@@ -64,7 +64,7 @@ public abstract class Character {
         return switch (name){
             case "doctor" -> new Doctor(name, player);
             case "engineer" -> new Engineer(name, player);
-            case "captain" -> new Captain(name);
+            case "captain" -> new Captain(name, player);
             case "firstOfficer" -> new FirstOfficer(name, player);
             case "alienCaptain" -> new AlienCaptain(name);
             default -> null;

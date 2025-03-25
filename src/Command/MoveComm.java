@@ -21,6 +21,10 @@ public class MoveComm extends Command {
     public String execute() {
         if(player.isFighting()){
             System.out.println(player.damage(10));
+
+            if(!player.isAlive()){
+                return "";
+            }
         }
 
         System.out.print("You can move to:\n" + world.neighbouringRooms() + "\nRoom to move to: ");

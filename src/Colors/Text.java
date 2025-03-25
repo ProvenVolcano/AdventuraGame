@@ -18,6 +18,8 @@ public class Text {
                 return "\u001B[38;2;180;121;226m" + text + "\u001B[0m";
             case 'd':
                 return "\u001B[38;2;255;0;0m" + text + "\u001B[0m";
+            case 'c':
+                return "\u001B[38;2;255;0;180m" + text + "\u001B[0m";
             default:
                 return text;
         }
