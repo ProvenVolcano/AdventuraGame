@@ -1,4 +1,4 @@
-1;Player's room;3,8;Battery,Bandages; ; ; ;true;0;
+1;Player's room;3;Battery,Bandages; ; ; ;true;0;
 2;Captain's room;3;Files,Bandages,Battery; ; ; ;3;0;
 3;Hallway;1,2,4,5;Laser Gun,Battery; ; ; ;true;0;
 4;Infirmary;3;Pills; ;doctor; ;true;2;

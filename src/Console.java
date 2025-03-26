@@ -5,6 +5,9 @@ import World.*;
 import java.util.HashMap;
 import java.util.Scanner;
 
+/**
+ * Main class, handles the whole game and commands input
+ */
 public class Console {
 
     private World world;
@@ -35,6 +38,9 @@ public class Console {
         commands.put("open", new OpenComm(world, player));
     }
 
+    /**
+     * Starts the game, loops command input until player exits, wins or dies
+     */
     public void start(){
 
         do {

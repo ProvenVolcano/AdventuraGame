@@ -5,6 +5,9 @@ import Items.*;
 
 import java.util.ArrayList;
 
+/**
+ * Class of the player, contains the inventory and values about the player's progress in the game
+ */
 public class Player {
 
     private int health;
@@ -39,6 +42,11 @@ public class Player {
         }
     }
 
+    /**
+     * Adds an item to the player's inventory
+     * @param item - the item to add
+     * @return - message if item was added or not
+     */
     public String addItem(Item item){
 
         if(item == null){
@@ -57,6 +65,10 @@ public class Player {
         return Text.color("Cannot take \" + item.getName() + \" - inventory is full", 'y');
     }
 
+    /**
+     * Returns string of items in the player's inventory and it's capacity
+     * @return - the string
+     */
     public String itemsString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Inventory (" + items.size() + "/" + INVENTORY_CAP + "):\n");
@@ -67,6 +79,11 @@ public class Player {
         return sb.toString();
     }
 
+    /**
+     * Uses an item in the inventory
+     * @param item - the item to use
+     * @return - message about the use of the item
+     */
     public String useItem(String item){
         for(Item item1 : items){
             if(item1.getName().equals(item)) {
@@ -81,6 +98,11 @@ public class Player {
         return Text.color("No such item in your inventory", 'r');
     }
 
+    /**
+     * Checks if the player has an item of a given name
+     * @param item - name of the item
+     * @return - true if player has the item, otherwise false
+     */
     public boolean containsItem(String item){
         for(Item item1 : items) {
             if (item1.getName().equalsIgnoreCase(item)) {
@@ -93,10 +115,19 @@ public class Player {
         return gun;
     }
 
+    /**
+     * Checks if there is space in the inventory
+     * @return - true of there is space for at least one item, otherwise false
+     */
     public boolean inventoryFree(){
         return items.size() < INVENTORY_CAP;
     }
 
+    /**
+     * Removes an item of a given name from the players inventory
+     * @param item - name of the item to return
+     * @return - true if there was such item, otherwise false
+     */
     public boolean remove(String item) {
         for(int i = 0; i < items.size(); i++) {
             if (items.get(i).getName().equals(item)) {
@@ -106,6 +137,11 @@ public class Player {
         return false;
     }
 
+    /**
+     * Lowers the player's health
+     * @param dmg - the amount of damage to take
+     * @return - message about the player's state, his remaining health or a death message
+     */
     public String damage(int dmg) {
         health -= dmg;
         alive = health > 0;

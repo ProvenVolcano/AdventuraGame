@@ -9,12 +9,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Class for the world, contains all the rooms and the players location
+ */
 public class World {
 
     private HashMap<Integer, Room> rooms;
     private Player player;
     private int currentRoom;
 
+    /**
+     * Loads the world, creates all rooms
+     * @param filename - name of the world file
+     * @param player - player object
+     */
     public World(String filename, Player player) {
         rooms = new HashMap<>();
         this.player = player;
@@ -46,6 +54,10 @@ public class World {
         currentRoom = 1;
     }
 
+    /**
+     * Returns IDs and names of neighbouring rooms to the room the player is currently in
+     * @return - the string of neighboring rooms
+     */
     public String neighbouringRooms(){
         StringBuilder result = new StringBuilder();
         ArrayList<Integer> idk = rooms.get(currentRoom).getConnections();
@@ -57,6 +69,11 @@ public class World {
         return result.toString();
     }
 
+    /**
+     * Moves player to another room by changing currentRoom
+     * @param roomID - ID of the room to move to
+     * @return - message if the move was successful or not
+     */
     public String moveToRoom(int roomID) {
         if(roomID == 7 && player.isSavedCaptain()) {
             player.setAlive(false);
@@ -71,19 +88,7 @@ public class World {
 
     }
 
-    public HashMap<Integer, Room> getRooms() {
-        return rooms;
-    }
-
-    public void setRooms(HashMap<Integer, Room> rooms) {
-        this.rooms = rooms;
-    }
-
     public Room getCurrentRoom() {
         return rooms.get(currentRoom);
-    }
-
-    public void setCurrentRoom(int currentRoom) {
-        this.currentRoom = currentRoom;
     }
 }

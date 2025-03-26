@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
+/**
+ * Class for a room, contains all the stuff that's in a room
+ */
 public class Room {
 
     private final int ID;
@@ -57,6 +60,10 @@ public class Room {
         createCrates(tokens);
     }
 
+    /**
+     * Adds IDs of rooms connecting to this room
+     * @param tokens - the values of the room
+     */
     private void createConnections(String[] tokens) {
         if(tokens[2].isBlank()){
             return;
@@ -72,6 +79,10 @@ public class Room {
         }
     }
 
+    /**
+     * Adds items in the room
+     * @param tokens - the values of the room
+     */
     private void createItems(String[] tokens) {
         if(tokens[3].isBlank()){
             return;
@@ -88,6 +99,10 @@ public class Room {
 
     }
 
+    /**
+     * Adds interactable objects in the room
+     * @param tokens - the values of the room
+     */
     private void createInteractables(String[] tokens) {
         if(tokens[4].isBlank()){
             return;
@@ -105,6 +120,10 @@ public class Room {
 
     }
 
+    /**
+     * Adds characters to the room
+     * @param tokens - the values of the room
+     */
     private void createCharacters(String[] tokens) {
         if(tokens[5].isBlank()){
             return;
@@ -119,6 +138,10 @@ public class Room {
         }
     }
 
+    /**
+     * Adds crates to the room
+     * @param tokens - the values of the room
+     */
     private void createCrates(String[] tokens) {
         if(tokens[6].isBlank()){
             return;
@@ -134,6 +157,10 @@ public class Room {
         }
     }
 
+    /**
+     * Returns the names of the crates in this room
+     * @return - the names string
+     */
     public String cratesString() {
         StringBuilder sb = new StringBuilder();
         for(int i = 0; i < crates.size(); i++) {
@@ -146,6 +173,11 @@ public class Room {
         return crates;
     }
 
+    /**
+     * Returns the dialog of a character
+     * @param name - the name of the character to talk to
+     * @return - the character's dialog
+     */
     public String talkToCharacter(String name) {
         if(characters.containsKey(name)){
             return characters.get(name).talk();
@@ -153,6 +185,10 @@ public class Room {
         return Text.color("No such person in this room", 'r');
     }
 
+    /**
+     * Returns names of characters in the room
+     * @return - the names string
+     */
     public String getCharactersString() {
         StringBuilder string = new StringBuilder();
 
@@ -163,10 +199,10 @@ public class Room {
         return string.toString();
     }
 
-    public void setCharacters(HashMap<String, Character> characters) {
-        this.characters = characters;
-    }
-
+    /**
+     * Returns items in this room
+     * @return - the items string
+     */
     public String getItemsString() {
 
         StringBuilder string = new StringBuilder();
@@ -178,6 +214,11 @@ public class Room {
         return string.toString();
     }
 
+    /**
+     * Returns an item object from the inventory and removes it from the inventory
+     * @param item - name of the item
+     * @return - the item object
+     */
     public Item getItem(String item) {
         for(Item item1 : items){
             if(item1.getName().equals(item)) {
@@ -190,6 +231,10 @@ public class Room {
         return null;
     }
 
+    /**
+     * Returns names of interactable objects in the room
+     * @return - the objects string
+     */
     public String getInteractablesString() {
         StringBuilder string = new StringBuilder();
 
@@ -200,6 +245,10 @@ public class Room {
         return string.toString();
     }
 
+    /**
+     * Gets called when player moves in a room, handles the spawning of aliens
+     * @return - move message and whether an alien spawned.
+     */
     public String entered(){
         player.setFighting(alien != null);
         String ret = moveMessage();
@@ -217,6 +266,10 @@ public class Room {
         return ret;
     }
 
+    /**
+     * Returns a move message which is displayed when player enters a room
+     * @return
+     */
     private String moveMessage() {
         return Text.color("Moved to " + name, 'g');
     }
@@ -242,10 +295,6 @@ public class Room {
         return interactables;
     }
 
-    public void setInteractables(HashMap<String, Interactable> interactables) {
-        this.interactables = interactables;
-    }
-
     public int getID() {
         return ID;
     }
@@ -260,10 +309,6 @@ public class Room {
 
     public ArrayList<Integer> getConnections() {
         return connections;
-    }
-
-    public void setConnections(ArrayList<Integer> connections) {
-        this.connections = connections;
     }
 
     public void setOpen(boolean open) {
