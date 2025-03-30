@@ -21,7 +21,11 @@ public class Core extends Interactable {
 
     @Override
     public String interact() {
-        if(player.isHasEngineerItems()){
+        if(player.isFixedCore()){
+            return Text.color("The core is running", 'y');
+        }
+
+        if(!player.isHasEngineerItems()){
             return Text.color("You don't have all the items needed for repair!", 'r');
         }
 
@@ -53,12 +57,6 @@ public class Core extends Interactable {
                 You need to screw out only those I tell you, in the exact order I tell you.\n
                 """);
 
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
         System.out.println("""
                 23 X           88 X           51 X
                 
@@ -66,12 +64,6 @@ public class Core extends Interactable {
                 
                 39 X           69 X           11 X
                 """);
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
 
         System.out.println("First, take out the one with the highest number whose digits are the same.");
         String screw1;
@@ -168,12 +160,6 @@ public class Core extends Interactable {
         System.out.println("You should see 3 ports for cables on the left and 5 on the right\n");
         System.out.println(scheme);
 
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
         System.out.println("""
                 Your task is fairly simple, just connect the ports on the left, which are marked in hexadecimal,\s
                 with the ones on the right, which are in the normal decimal system.
@@ -202,7 +188,104 @@ public class Core extends Interactable {
     }
 
     private boolean chip() {
-        // Will add later (maybe)
+        System.out.println("""    
+                        We need to calibrate the chip, from the top and bottom is coming the input,
+                        from the left the operation that should be done with the numbers, and from the right comes the output.
+                        """);
+
+        System.out.println("""
+                         |    |    |    |
+                         1    0    1    1
+                       __|____|____|____|____
+                      |  A    B    C    D  A |___ ?
+                      |      __________      |
+                      |     |          |   B |___ ?
+                __OR__|     |          |     |
+                      |     |          |   C |___ ?
+                      |     |__________|     |
+                      |                    D |___ ?
+                      |______________________|
+                        |     |     |    |
+                        0     1     1    0
+                        |     |     |    |
+                """);
+
+        String output1;
+        do {
+            System.out.print("> ");
+            output1 = sc.nextLine();
+
+            if(!output1.equals("1111")) {
+                errors++;
+                if(errors == 3){
+                    return true;
+                }
+                System.out.println("Errors: " + errors + "/3");
+            }
+        } while (!output1.equals("1111"));
+
+        System.out.println("""
+                         |    |    |    |
+                         0    1    0    0
+                       __|____|____|____|____
+                      |  A    B    C    D  A |___ ?
+                      |      __________      |
+                      |     |          |   B |___ ?
+                __AND_|     |          |     |
+                      |     |          |   C |___ ?
+                      |     |__________|     |
+                      |                    D |___ ?
+                      |______________________|
+                        |     |     |    |
+                        0     1     1    0
+                        |     |     |    |
+                """);
+
+        String output2;
+        do {
+            System.out.print("> ");
+            output2 = sc.nextLine();
+
+            if(!output2.equals("0100")) {
+                errors++;
+                if(errors == 3){
+                    return true;
+                }
+                System.out.println("Errors: " + errors + "/3");
+            }
+        } while (!output2.equals("0100"));
+
+        System.out.println("""
+                         |    |    |    |
+                         1    0    0    1
+                       __|____|____|____|____
+                      |  A    B    C    D  A |___ ?
+                      |      __________      |
+                      |     |          |   B |___ ?
+                __XOR_|     |          |     |
+                      |     |          |   C |___ ?
+                      |     |__________|     |
+                      |                    D |___ ?
+                      |______________________|
+                        |     |     |    |
+                        1     1     0    0
+                        |     |     |    |
+                """);
+
+        String output3;
+        do {
+            System.out.print("> ");
+            output3 = sc.nextLine();
+
+            if(!output3.equals("0101")) {
+                errors++;
+                if(errors == 3){
+                    return true;
+                }
+                System.out.println("Errors: " + errors + "/3");
+            }
+        } while (!output3.equals("0101"));
+
         return false;
     }
 }

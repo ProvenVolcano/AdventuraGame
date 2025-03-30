@@ -24,7 +24,7 @@ public class Scheme extends Item {
         try {
             BufferedReader br = new BufferedReader(new FileReader("alienShipScheme.txt"));
             while((line = br.readLine()) != null) {
-                map.append(line);
+                map.append(line + "\n");
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
