@@ -3,6 +3,9 @@ package Items;
 import Colors.*;
 import World.Player;
 
+/**
+ * Class of the bandages item
+ */
 public class Bandages extends Item {
 
     private Player player;
@@ -14,6 +17,10 @@ public class Bandages extends Item {
         color = 'p';
     }
 
+    /**
+     * Increases player's health
+     * @return - message about the player's current health
+     */
     @Override
     public String use() {
         player.setHealth(player.getHealth() + 25);

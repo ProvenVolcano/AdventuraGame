@@ -3,6 +3,9 @@ package Items;
 import Colors.Text;
 import World.Player;
 
+/**
+ * Class for the battery item
+ */
 public class Battery extends Item {
 
     private Player player;
@@ -14,6 +17,10 @@ public class Battery extends Item {
         color = 'y';
     }
 
+    /**
+     * Recharges the Laser Gun if the player has it
+     * @return - message about the Laser Gun power
+     */
     @Override
     public String use() {
         oneTimeUse = true;

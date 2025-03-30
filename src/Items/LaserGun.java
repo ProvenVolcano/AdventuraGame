@@ -2,6 +2,9 @@ package Items;
 
 import Colors.*;
 
+/**
+ * The Laser Gun which the player uses to defend himself
+ */
 public class LaserGun extends Item {
 
     private int power;
@@ -17,10 +20,17 @@ public class LaserGun extends Item {
         return power;
     }
 
+    /**
+     * Changes the power to 100
+     */
     public void reload() {
         power = 100;
     }
 
+    /**
+     * Decreases the laser gun power
+     * @return - message about the charge of the laser gun
+     */
     @Override
     public String use() {
         power -= 20;

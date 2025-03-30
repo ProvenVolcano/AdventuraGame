@@ -4,10 +4,16 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * The scheme of the alien spaceship
+ */
 public class Scheme extends Item {
 
     private StringBuilder map;
 
+    /**
+     * Loads the scheme from file
+     */
     public Scheme() {
         oneTimeUse = false;
         name = "Map";
@@ -25,6 +31,10 @@ public class Scheme extends Item {
         }
     }
 
+    /**
+     * Returns the scheme
+     * @return - the scheme as a String
+     */
     @Override
     public String use() {
         return map.toString();
