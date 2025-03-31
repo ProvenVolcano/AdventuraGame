@@ -5,6 +5,9 @@ import Colors.*;
 
 import java.util.Scanner;
 
+/**
+ * Password panel that can unlock a room if given the right password
+ */
 public class PassPanel extends Interactable {
 
     private Room room;
@@ -16,6 +19,10 @@ public class PassPanel extends Interactable {
         name = "Password Panel";
     }
 
+    /**
+     * Makes the player enter a password, if it's correct it opens a room
+     * @return
+     */
     @Override
     public String interact() {
         System.out.print("Enter password: ");

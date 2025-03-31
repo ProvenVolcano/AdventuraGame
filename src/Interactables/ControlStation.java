@@ -7,6 +7,9 @@ import World.Player;
 
 import java.util.Scanner;
 
+/**
+ * The spaceship control station, where the player can interact with the outside
+ */
 public class ControlStation extends Interactable {
 
     private Scanner sc;
@@ -22,6 +25,11 @@ public class ControlStation extends Interactable {
         scheme = new Scheme();
     }
 
+    /**
+     * Method to interact with the control station
+     * Player can enter 1 to talk with the alien captain or 2 to scan the alien ship
+     * @return - the message about the interaction or the alien captain dialog
+     */
     @Override
     public String interact() {
 
@@ -31,7 +39,7 @@ public class ControlStation extends Interactable {
             case "1":
                 return alienCaptain.talk();
             case "2":
-                if(player.isFixedCore()){
+                if (player.isFixedCore()) {
                     return player.addItem(scheme);
                 }
                 return Text.color("Cannot begin scan, emergency power only", 'y');

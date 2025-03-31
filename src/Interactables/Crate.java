@@ -7,6 +7,9 @@ import Colors.Text;
 import Items.*;
 import World.Player;
 
+/**
+ * Class for a crate which can store items
+ */
 public class Crate extends Interactable {
 
     private ArrayList<Item> items;
@@ -25,6 +28,10 @@ public class Crate extends Interactable {
         }
     }
 
+    /**
+     * Shows the player the content of the crate and lets him take an item from it
+     * @return - message about the picking of an item from the crate
+     */
     @Override
     public String interact() {
         if(items.isEmpty()) {

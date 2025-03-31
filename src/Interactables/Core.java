@@ -6,6 +6,9 @@ import World.Player;
 import java.util.HashMap;
 import java.util.Scanner;
 
+/**
+ * Class for the spaceships power core
+ */
 public class Core extends Interactable {
 
     private Player player;
@@ -19,6 +22,10 @@ public class Core extends Interactable {
         name = "Power Core";
     }
 
+    /**
+     * Interaction method, calls the individual fixing methods and controls number of mistakes
+     * @return - message about the interaction
+     */
     @Override
     public String interact() {
         if(player.isFixedCore()){
@@ -49,6 +56,10 @@ public class Core extends Interactable {
         return "Engineer:\nYou did it! Amazing! We have full power again, most systems should start working now!";
     }
 
+    /**
+     * First step to fix the core, makes the player enter numbers based on a text
+     * @return - if the player has done more than 2 mistakes
+     */
     private boolean screws() {
         System.out.println("""
                 Engineer:
@@ -137,6 +148,10 @@ public class Core extends Interactable {
         return false;
     }
 
+    /**
+     * Second method to fix the core, makes the player convert hexadecimal numbers to decimal
+     * @return - if the player has done more than 2 mistakes
+     */
     private boolean cables() {
 
         HashMap<String, String> cables = new HashMap<>();
@@ -187,6 +202,10 @@ public class Core extends Interactable {
         return false;
     }
 
+    /**
+     * Last method to fix the core, makes the player change a number based on logical operators
+     * @return - if the player has done more than 2 mistakes
+     */
     private boolean chip() {
         System.out.println("""    
                         We need to calibrate the chip, from the top and bottom is coming the input,

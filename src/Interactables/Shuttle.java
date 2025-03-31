@@ -3,6 +3,9 @@ package Interactables;
 import Colors.Text;
 import World.*;
 
+/**
+ * Shuttle which can make the player move to the alien's spaceship
+ */
 public class Shuttle extends Interactable {
 
     private Player player;
@@ -16,6 +19,10 @@ public class Shuttle extends Interactable {
         name = "Shuttle";
     }
 
+    /**
+     * If the player has a power cell it will move him to the alien ship (room 8)
+     * @return - message about the state of the shuttle or about the move
+     */
     @Override
     public String interact() {
         if(!fixed){
