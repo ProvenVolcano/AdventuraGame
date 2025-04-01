@@ -62,7 +62,7 @@ public class Player {
             items.add(item);
             return Text.color(item.getName() + " added to inventory", 'g');
         }
-        return Text.color("Cannot take \" + item.getName() + \" - inventory is full", 'y');
+        return Text.color("Cannot take " + item.getName() + " - inventory is full", 'y');
     }
 
     /**

@@ -80,6 +80,11 @@ public class World {
             return Text.color("Congratulations! You completed the game", 'c');
         }
 
+        if(roomID == 8) {
+            currentRoom = roomID;
+            return rooms.get(currentRoom).entered();
+        }
+
         if(rooms.get(currentRoom).getConnections().contains(roomID) && rooms.containsKey(roomID) && rooms.get(roomID).isOpen()) {
             currentRoom = roomID;
             return rooms.get(currentRoom).entered();

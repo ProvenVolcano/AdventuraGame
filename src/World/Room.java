@@ -268,7 +268,7 @@ public class Room {
 
     /**
      * Returns a move message which is displayed when player enters a room
-     * @return
+     * @return - the message
      */
     private String moveMessage() {
         return Text.color("Moved to " + name, 'g');
