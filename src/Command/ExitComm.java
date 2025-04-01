@@ -1,5 +1,8 @@
 package Command;
 
+/**
+ * Command to exit the game
+ */
 public class ExitComm extends Command {
 
     @Override

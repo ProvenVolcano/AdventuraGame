@@ -5,6 +5,9 @@ import World.*;
 
 import java.util.Scanner;
 
+/**
+ * Command to talk to other characters
+ */
 public class TalkComm extends Command {
 
     private World world;
@@ -17,6 +20,10 @@ public class TalkComm extends Command {
         sc = new Scanner(System.in);
     }
 
+    /**
+     * Lists characters in a room and talks with one that the player says
+     * @return - dialog of the character
+     */
     @Override
     public String execute() {
         if(player.isFighting()){

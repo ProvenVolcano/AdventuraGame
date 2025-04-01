@@ -2,6 +2,9 @@ package Characters;
 
 import World.Player;
 
+/**
+ * Class for the captain that the player rescues
+ */
 public class Captain extends Character {
 
     Player player;

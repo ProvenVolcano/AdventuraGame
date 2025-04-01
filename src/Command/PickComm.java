@@ -5,6 +5,9 @@ import World.*;
 
 import java.util.Scanner;
 
+/**
+ * Command to pick up an item
+ */
 public class PickComm extends Command {
 
     private World world;
@@ -17,6 +20,10 @@ public class PickComm extends Command {
         sc = new Scanner(System.in);
     }
 
+    /**
+     * Lists item in a room and asks for an item to add to the player's inventory
+     * @return - if an item was added
+     */
     @Override
     public String execute() {
         if(player.isFighting()){

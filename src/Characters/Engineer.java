@@ -5,6 +5,9 @@ import World.Player;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * Class for the engineer
+ */
 public class Engineer extends Character {
 
     private Player player;
@@ -17,6 +20,10 @@ public class Engineer extends Character {
         Collections.addAll(neededItems, "Screwdriver", "Blue cable", "Chip", "Yellow cable", "Red cable");
     }
 
+    /**
+     * Asks the player for bandages, when the player gives them to him, he'll give the player a list of items to bring to him
+     * @return - the engineer's dialog
+     */
     @Override
     public String talk() {
         switch (dialogIndex) {
@@ -41,6 +48,10 @@ public class Engineer extends Character {
         return "idk";
     }
 
+    /**
+     * Checks if the player has all the items needed for the repair of the core
+     * @return - true if all items have been collected
+     */
     private boolean hasAll() {
         for (int i = 0; i < neededItems.size(); i++) {
             if (player.containsItem(neededItems.get(i))) {
@@ -51,6 +62,10 @@ public class Engineer extends Character {
         return neededItems.isEmpty();
     }
 
+    /**
+     * Returns a string of the needed items
+     * @return - the needed items in a string
+     */
     private String neededItemsString() {
         StringBuilder string = new StringBuilder();
         for(int i = 0; i < neededItems.size() - 1; i++) {

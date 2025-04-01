@@ -5,6 +5,9 @@ import java.util.Scanner;
 import Colors.Text;
 import World.*;
 
+/**
+ * Command to move between rooms
+ */
 public class MoveComm extends Command {
 
     private World world;
@@ -17,6 +20,10 @@ public class MoveComm extends Command {
         sc = new Scanner(System.in);
     }
 
+    /**
+     * Lists neighbouring rooms, asks for a room to move to and moves the player to that room if it's possible
+     * @return - message about the move
+     */
     @Override
     public String execute() {
         if(player.isFighting()){

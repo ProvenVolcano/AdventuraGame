@@ -5,6 +5,9 @@ import World.*;
 
 import java.util.Scanner;
 
+/**
+ * Command to open crates
+ */
 public class OpenComm extends Command {
 
     private World world;
@@ -17,6 +20,10 @@ public class OpenComm extends Command {
         sc = new Scanner(System.in);
     }
 
+    /**
+     * Lists available crates and asks for a crate to open
+     * @return - crate interaction
+     */
     @Override
     public String execute() {
         if(player.isFighting()){

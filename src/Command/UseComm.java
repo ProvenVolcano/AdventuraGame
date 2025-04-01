@@ -5,6 +5,9 @@ import World.Player;
 
 import java.util.Scanner;
 
+/**
+ * Command to use an item
+ */
 public class UseComm extends Command {
 
     private Player player;
@@ -15,6 +18,10 @@ public class UseComm extends Command {
         sc = new Scanner(System.in);
     }
 
+    /**
+     * Lists items in the inventory and uses an item that the player inputs
+     * @return - message about the use of an item
+     */
     @Override
     public String execute() {
 

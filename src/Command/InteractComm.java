@@ -5,6 +5,9 @@ import World.*;
 
 import java.util.Scanner;
 
+/**
+ * Command to interact with an interactable object
+ */
 public class InteractComm extends Command {
 
     private World world;
@@ -17,6 +20,10 @@ public class InteractComm extends Command {
         sc = new Scanner(System.in);
     }
 
+    /**
+     * Will interact with a given object if the player isn't currently fighting with an alien
+     * @return - message about the interaction
+     */
     @Override
     public String execute() {
         if(player.isFighting()){

@@ -2,6 +2,9 @@ package Characters;
 
 import World.Player;
 
+/**
+ * Class for the first officer
+ */
 public class FirstOfficer extends Character {
 
     private Player player;
@@ -11,6 +14,11 @@ public class FirstOfficer extends Character {
         this.player = player;
     }
 
+    /**
+     * Asks the player for pills, when the player gives them to him, he'll ask to bring files
+     * and will tell the player the password to the captain's room
+     * @return - the first officer's dialog
+     */
     @Override
     public String talk() {
         switch (dialogIndex){

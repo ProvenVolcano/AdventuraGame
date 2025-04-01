@@ -2,6 +2,9 @@ package Command;
 
 import java.util.HashMap;
 
+/**
+ * Command to list all commands
+ */
 public class HelpComm extends Command {
 
     private HashMap<String, Command> commands;
@@ -10,6 +13,10 @@ public class HelpComm extends Command {
         this.commands = commands;
     }
 
+    /**
+     * Lists all commands
+     * @return - string of all commands
+     */
     @Override
     public String execute() {
 

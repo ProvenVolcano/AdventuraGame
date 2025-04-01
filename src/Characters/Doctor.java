@@ -5,6 +5,9 @@ import World.Player;
 
 import java.util.Scanner;
 
+/**
+ * Class for the doctor which gives the player bandages
+ */
 public class Doctor extends Character {
 
     Player player;
@@ -16,6 +19,10 @@ public class Doctor extends Character {
         sc = new Scanner(System.in);
     }
 
+    /**
+     * Asks the player if they want bandages, if they answer yes, bandages are added in the players inventory
+     * @return - the doctor's dialog
+     */
     @Override
     public String talk() {
         switch (dialogIndex) {

@@ -6,6 +6,9 @@ import World.*;
 
 import java.util.Scanner;
 
+/**
+ * Command to drop an item from the inventory
+ */
 public class ThrowComm extends Command {
 
     private Player player;
@@ -18,6 +21,11 @@ public class ThrowComm extends Command {
         sc = new Scanner(System.in);
     }
 
+    /**
+     * Lists items in the inventory asks for which one to remove, removes the item from the inventory
+     * and adds it into player's current room
+     * @return - message about the removal of an item
+     */
     @Override
     public String execute() {
         if(player.isFighting()){

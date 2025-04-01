@@ -5,6 +5,9 @@ import World.*;
 
 import java.util.Random;
 
+/**
+ * Command to shoot from the laser gun
+ */
 public class ShootComm extends Command {
 
     private World world;
@@ -17,6 +20,10 @@ public class ShootComm extends Command {
         rd = new Random();
     }
 
+    /**
+     * Shoots an enemy in the room if the player has a laser gun and it has enough power
+     * @return - message about the shot of the alien
+     */
     @Override
     public String execute() {
         if(player.getGun() == null){

@@ -7,6 +7,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Abstract class for characters that the player can talk with
+ */
 public abstract class Character {
 
     protected String name;
@@ -14,6 +17,10 @@ public abstract class Character {
     protected int dialogIndex;
     protected int password;
 
+    /**
+     * Constructor, loads the dialog from a file
+     * @param fileName - name of the file with the dialog
+     */
     public Character(String fileName) {
         dialogs = new ArrayList<>();
         dialogIndex = 0;
@@ -44,12 +51,20 @@ public abstract class Character {
         }
     }
 
+    /**
+     * Executes when the player talks to a character
+     * @return - the dialog
+     */
     public abstract String talk();
 
     public String getName() {
         return name;
     }
 
+    /**
+     * Replaces '#' in the characters dialog with a given number
+     * @param pass - the number
+     */
     public void setPassword(int pass) {
         this.password = pass;
 
@@ -60,6 +75,12 @@ public abstract class Character {
         }
     }
 
+    /**
+     * Factory method for characters
+     * @param name - name of the character
+     * @param player - the player
+     * @return - the created character
+     */
     public static Character factory(String name, Player player) {
         return switch (name){
             case "doctor" -> new Doctor(name, player);

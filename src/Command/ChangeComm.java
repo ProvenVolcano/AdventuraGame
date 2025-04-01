@@ -3,6 +3,9 @@ package Command;
 import Colors.Text;
 import World.Player;
 
+/**
+ * Command to replace a battery in the laser gun
+ */
 public class ChangeComm extends Command {
 
     private Player player;
@@ -11,6 +14,10 @@ public class ChangeComm extends Command {
         this.player = player;
     }
 
+    /**
+     * If the player has a battery, laser gun will be recharged
+     * @return - message about if the laser gun has been recharged or if the player doesn't have one
+     */
     @Override
     public String execute() {
         if(!player.containsItem("Battery")){

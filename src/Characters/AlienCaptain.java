@@ -2,6 +2,9 @@ package Characters;
 
 import World.Player;
 
+/**
+ * Class for the captain of the aliens
+ */
 public class AlienCaptain extends Character {
 
     Player player;
