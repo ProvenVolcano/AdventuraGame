@@ -19,7 +19,7 @@ public class Console {
     public Console() {
 
         player = new Player();
-        world = new World("world.txt", player);
+        world = new World("res\\world.txt", player);
 
         exit = false;
         sc = new Scanner(System.in);

@@ -72,6 +72,7 @@ public class World {
     /**
      * Moves player to another room by changing currentRoom
      * @param roomID - ID of the room to move to
+     * @param bypass - if true, moves the player regardless where he currently is
      * @return - message if the move was successful or not
      */
     public String moveToRoom(int roomID, boolean bypass) {

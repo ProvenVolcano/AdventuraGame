@@ -22,7 +22,7 @@ public class Scheme extends Item {
 
         String line;
         try {
-            BufferedReader br = new BufferedReader(new FileReader("alienShipScheme.txt"));
+            BufferedReader br = new BufferedReader(new FileReader("res\\alienShipScheme.txt"));
             while((line = br.readLine()) != null) {
                 map.append(line + "\n");
             }

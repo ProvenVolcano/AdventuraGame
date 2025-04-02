@@ -1,6 +1,8 @@
-package Items;
+package Tests;
 
 import Colors.Text;
+import Items.Battery;
+import Items.LaserGun;
 import World.Player;
 import org.junit.jupiter.api.Test;
 

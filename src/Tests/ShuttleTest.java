@@ -1,6 +1,7 @@
-package Interactables;
+package Tests;
 
 import Colors.Text;
+import Interactables.Shuttle;
 import Items.Component;
 import World.Player;
 import World.World;
@@ -22,7 +23,7 @@ class ShuttleTest {
     void interact() {
 
         Player player = new Player();
-        World world = new World("world.txt", player);
+        World world = new World("res\\world.txt", player);
         Shuttle shuttle = new Shuttle(player, world);
 
         assertEquals(Text.color("You need a power cell for the shuttle", 'y'), shuttle.interact());

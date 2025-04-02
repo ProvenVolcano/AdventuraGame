@@ -1,6 +1,7 @@
-package Command;
+package Tests;
 
 import Colors.Text;
+import Command.ShootComm;
 import Items.LaserGun;
 import World.Player;
 import World.World;
@@ -19,7 +20,7 @@ class ShootCommTest {
     @Test
     void execute() {
         Player player = new Player();
-        World world = new World("world.txt", player);
+        World world = new World("res\\world.txt", player);
 
         ShootComm sc = new ShootComm(world, player);
 
