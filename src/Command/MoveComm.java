@@ -38,7 +38,7 @@ public class MoveComm extends Command {
         String newRoom = sc.nextLine();
 
         try {
-            return world.moveToRoom(Integer.parseInt(newRoom));
+            return world.moveToRoom(Integer.parseInt(newRoom), false);
         } catch (NumberFormatException e) {
             return Text.color("Invalid input, write only the number of the room you want to move to.", 'r');
         }

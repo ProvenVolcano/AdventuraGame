@@ -74,15 +74,15 @@ public class World {
      * @param roomID - ID of the room to move to
      * @return - message if the move was successful or not
      */
-    public String moveToRoom(int roomID) {
+    public String moveToRoom(int roomID, boolean bypass) {
+        if(bypass) {
+            currentRoom = roomID;
+            return rooms.get(currentRoom).entered();
+        }
+
         if(roomID == 7 && player.isSavedCaptain()) {
             player.setAlive(false);
             return Text.color("Congratulations! You completed the game", 'c');
-        }
-
-        if(roomID == 8) {
-            currentRoom = roomID;
-            return rooms.get(currentRoom).entered();
         }
 
         if(rooms.get(currentRoom).getConnections().contains(roomID) && rooms.containsKey(roomID) && rooms.get(roomID).isOpen()) {

@@ -18,13 +18,14 @@ class WorldTest {
         Player player = new Player();
         World world = new World("world.txt", player);
 
-        assertEquals(Text.color("Can't move to that room", 'r'), world.moveToRoom(999));
-        assertEquals(Text.color("Can't move to that room", 'r'), world.moveToRoom(-999));
-        assertEquals(Text.color("Moved to Hallway", 'g'), world.moveToRoom(3));
-        assertEquals(Text.color("Can't move to that room", 'r'), world.moveToRoom(2));
+        assertEquals(Text.color("Can't move to that room", 'r'), world.moveToRoom(999, false));
+        assertEquals(Text.color("Can't move to that room", 'r'), world.moveToRoom(-999, false));
+        assertEquals(Text.color("Moved to Hallway", 'g'), world.moveToRoom(3, false));
+        assertEquals(Text.color("Can't move to that room", 'r'), world.moveToRoom(2, false));
+        assertEquals(Text.color("Moved to Captain's room", 'g'), world.moveToRoom(2, true));
 
         player.setSavedCaptain(true);
-        assertEquals(Text.color("Congratulations! You completed the game", 'c'), world.moveToRoom(7));
+        assertEquals(Text.color("Congratulations! You completed the game", 'c'), world.moveToRoom(7, false));
 
     }
 }

@@ -35,6 +35,6 @@ public class Shuttle extends Interactable {
         if(!player.isFixedCore()){
             return Text.color("Emergency power only, can't open hangar door", 'o');
         }
-        return world.moveToRoom(8);
+        return world.moveToRoom(8, true);
     }
 }
