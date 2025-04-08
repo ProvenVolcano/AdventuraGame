@@ -35,6 +35,7 @@ public class TalkComm extends Command {
         }
 
         System.out.println(world.getCurrentRoom().getCharactersString());
+        System.out.print("Talk to: ");
         String name = sc.nextLine();
 
         return world.getCurrentRoom().talkToCharacter(name);

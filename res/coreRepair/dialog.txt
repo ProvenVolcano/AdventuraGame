@@ -1,0 +1,13 @@
+Engineer:
+Okay, listen very carefully, we only have one shot at this, if you mess up, it could blow up the whole ship.
+In front of you there should be a panel with nine screws with numbers next to them.
+You need to screw out only those I tell you, in the exact order I tell you.
+First, take out the one with the highest number whose digits are the same.
+Great! Next, the one next to the previous one, whose number is furthest away it.
+Just 2 more to go! Now, screw out the one on the opposite column, but on the same row as the previous one.
+Last one! Screw out the one whose number is divisible by 10.
+You did it! Now we can move on to the next part.
+You should see 3 ports for cables on the left and 5 on the right.\nYour task is fairly simple, just connect the ports on the left, which are marked in hexadecimal, with the ones on the right, which are in the normal decimal system.
+Wonderful! The last step remains now.
+We need to calibrate the chip, from the top and bottom is coming the input, from the left the operation that should be done with the numbers, and from the right comes the output.
+You did it! Amazing! We have full power again, most systems should start working now!

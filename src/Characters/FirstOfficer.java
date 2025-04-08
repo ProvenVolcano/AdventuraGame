@@ -27,6 +27,7 @@ public class FirstOfficer extends Character {
                 return dialogs.get(0);
             case 1:
                 if (player.containsItem("Pills")) {
+                    player.remove("Pills");
                     dialogIndex++;
                 } else return dialogs.get(1);
             case 2:

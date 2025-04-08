@@ -271,7 +271,32 @@ public class Room {
      * @return - the message
      */
     private String moveMessage() {
-        return Text.color("Moved to " + name, 'g');
+        String itemMes = "";
+        String charMes = "";
+        String objMes = "";
+        String cratesMes = "";
+
+        if(!items.isEmpty()){
+            itemMes = "\nThere are items in this room";
+        }
+        if(!characters.isEmpty()){
+            charMes = "\nThere are characters in this room";
+        }
+        if(!interactables.isEmpty()){
+            objMes = "\nThere is a " + interactablesNames() + "in this room";
+        }
+        if(!crates.isEmpty()){
+            cratesMes = "\nThere are crates in this room";
+        }
+        return Text.color("Moved to " + name, 'g') + itemMes + charMes + objMes + cratesMes;
+    }
+
+    private String interactablesNames() {
+        String ret = "";
+        for(String name : interactables.keySet()) {
+            ret += interactables.get(name).getName() + " ";
+        }
+        return ret;
     }
 
     public String shootAlien(int dmg) {

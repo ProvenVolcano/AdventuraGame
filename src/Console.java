@@ -2,6 +2,9 @@ import Colors.Text;
 import Command.*;
 import World.*;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -43,6 +46,8 @@ public class Console {
      */
     public void start(){
 
+        System.out.println(getFirstMessage());
+
         do {
 
             System.out.print("> ");
@@ -57,5 +62,21 @@ public class Console {
 
         } while (!exit && player.isAlive());
         sc.close();
+    }
+
+    public String getFirstMessage() {
+        try {
+            String message = "";
+            String line;
+            BufferedReader br = new BufferedReader(new FileReader("res/firstMessage.txt"));
+            while ((line = br.readLine()) != null) {
+                message += line + "\n";
+            }
+            br.close();
+            return message;
+
+        } catch (IOException e) {
+            return "";
+        }
     }
 }

@@ -35,6 +35,7 @@ public class InteractComm extends Command {
         }
 
         System.out.println(world.getCurrentRoom().getInteractablesString());
+        System.out.print("Interact with: ");
         String obj = sc.nextLine();
 
         try {

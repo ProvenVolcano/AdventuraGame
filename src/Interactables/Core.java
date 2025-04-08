@@ -3,6 +3,10 @@ package Interactables;
 import Colors.Text;
 import World.Player;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -14,12 +18,20 @@ public class Core extends Interactable {
     private Player player;
     private Scanner sc;
     private int errors;
+    private ArrayList<String> dialog;
+    private String screws;
+    private String cable;
+    private ArrayList<String> chips;
 
     public Core(Player player) {
         this.player = player;
         errors = 0;
         sc = new Scanner(System.in);
         name = "Power Core";
+        dialog = loadDialogs();
+        screws = loadFile("screws.txt");
+        cable = loadFile("cables.txt");
+        chips = loadChips();
     }
 
     /**
@@ -52,8 +64,7 @@ public class Core extends Interactable {
         }
 
         player.setFixedCore(true);
-        System.out.println(Text.color("Power core running, restoring power...", 'g'));
-        return "Engineer:\nYou did it! Amazing! We have full power again, most systems should start working now!";
+        return Text.color("Power core running, restoring power...\n", 'g') + dialog.get(12);
     }
 
     /**
@@ -61,22 +72,11 @@ public class Core extends Interactable {
      * @return - if the player has done more than 2 mistakes
      */
     private boolean screws() {
-        System.out.println("""
-                Engineer:
-                Okay, listen very carefully, we only have one shot at this, if you mess up, it could blow up the whole ship.
-                In front of you there should be a panel with nine screws with numbers next to them.
-                You need to screw out only those I tell you, in the exact order I tell you.\n
-                """);
 
-        System.out.println("""
-                23 X           88 X           51 X
-                
-                61 X           60 X           97 X
-                
-                39 X           69 X           11 X
-                """);
+        System.out.println(dialog.get(0) + "\n" + dialog.get(1) + "\n" + dialog.get(2) + "\n" + dialog.get(3));
+        System.out.println(screws);
+        System.out.println(dialog.get(4));
 
-        System.out.println("First, take out the one with the highest number whose digits are the same.");
         String screw1;
 
         do {
@@ -93,7 +93,7 @@ public class Core extends Interactable {
 
         } while (!screw1.equals("88"));
 
-        System.out.println("Great! Next, the one next to the previous one, whose number is furthest away it.");
+        System.out.println(dialog.get(5));
 
         String screw2;
 
@@ -110,7 +110,7 @@ public class Core extends Interactable {
             }
         } while (!screw2.equals("23"));
 
-        System.out.println("Just 2 more to go! Now, screw out the one on the opposite column, but on the same row as the previous one.");
+        System.out.println(dialog.get(6));
 
         String screw3;
 
@@ -127,7 +127,7 @@ public class Core extends Interactable {
             }
         } while (!screw3.equals("51"));
 
-        System.out.println("Last one! Screw out the one whose number is divisible by 10.");
+        System.out.println(dialog.get(7));
 
         String screw4;
 
@@ -144,7 +144,7 @@ public class Core extends Interactable {
             }
         } while (!screw4.equals("60"));
 
-        System.out.println("You did it! Now we can move on to the next part.");
+        System.out.println(dialog.get(8));
         return false;
     }
 
@@ -159,26 +159,8 @@ public class Core extends Interactable {
         cables.put("2-4", "red");
         cables.put("3-1", "yellow");
 
-        StringBuilder scheme = new StringBuilder();
-        scheme.append("""
-                                       42  :1
-                
-                1: 1B                  225 :2
-                
-                2: F1                  27  :3
-                
-                3: 2A                  240 :4
-                
-                                       32  :5
-                """);
-
-        System.out.println("You should see 3 ports for cables on the left and 5 on the right\n");
-        System.out.println(scheme);
-
-        System.out.println("""
-                Your task is fairly simple, just connect the ports on the left, which are marked in hexadecimal,\s
-                with the ones on the right, which are in the normal decimal system.
-                """);
+        System.out.println(dialog.get(9));
+        System.out.println(cable);
 
         System.out.println("(For the input, write the number of the ports, first the left one, separated by a dash, for example: 3-5)");
 
@@ -194,11 +176,11 @@ public class Core extends Interactable {
                 }
                 System.out.println("Errors: " + errors + "/3");
             } else {
-                scheme.append(cables.get(input));
+                System.out.println(Text.color("Correct!", 'g'));
             }
         }
 
-        System.out.println("Wonderful! The last step remains now.");
+        System.out.println(dialog.get(10));
         return false;
     }
 
@@ -207,27 +189,8 @@ public class Core extends Interactable {
      * @return - if the player has done more than 2 mistakes
      */
     private boolean chip() {
-        System.out.println("""    
-                        We need to calibrate the chip, from the top and bottom is coming the input,
-                        from the left the operation that should be done with the numbers, and from the right comes the output.
-                        """);
-
-        System.out.println("""
-                         |    |    |    |
-                         1    0    1    1
-                       __|____|____|____|____
-                      |  A    B    C    D  A |___ ?
-                      |      __________      |
-                      |     |          |   B |___ ?
-                __OR__|     |          |     |
-                      |     |          |   C |___ ?
-                      |     |__________|     |
-                      |                    D |___ ?
-                      |______________________|
-                        |     |     |    |
-                        0     1     1    0
-                        |     |     |    |
-                """);
+        System.out.println(dialog.get(11));
+        System.out.println(chips.get(0));
 
         String output1;
         do {
@@ -243,22 +206,7 @@ public class Core extends Interactable {
             }
         } while (!output1.equals("1111"));
 
-        System.out.println("""
-                         |    |    |    |
-                         0    1    0    0
-                       __|____|____|____|____
-                      |  A    B    C    D  A |___ ?
-                      |      __________      |
-                      |     |          |   B |___ ?
-                __AND_|     |          |     |
-                      |     |          |   C |___ ?
-                      |     |__________|     |
-                      |                    D |___ ?
-                      |______________________|
-                        |     |     |    |
-                        0     1     1    0
-                        |     |     |    |
-                """);
+        System.out.println(chips.get(1));
 
         String output2;
         do {
@@ -274,22 +222,7 @@ public class Core extends Interactable {
             }
         } while (!output2.equals("0100"));
 
-        System.out.println("""
-                         |    |    |    |
-                         1    0    0    1
-                       __|____|____|____|____
-                      |  A    B    C    D  A |___ ?
-                      |      __________      |
-                      |     |          |   B |___ ?
-                __XOR_|     |          |     |
-                      |     |          |   C |___ ?
-                      |     |__________|     |
-                      |                    D |___ ?
-                      |______________________|
-                        |     |     |    |
-                        1     1     0    0
-                        |     |     |    |
-                """);
+        System.out.println(chips.get(2));
 
         String output3;
         do {
@@ -306,5 +239,57 @@ public class Core extends Interactable {
         } while (!output3.equals("0101"));
 
         return false;
+    }
+
+    private ArrayList<String> loadDialogs() {
+        try {
+            ArrayList<String> dialogs = new ArrayList<>();
+            String line;
+            BufferedReader br = new BufferedReader(new FileReader("res/coreRepair/dialog.txt"));
+            while ((line = br.readLine()) != null) {
+                dialogs.add(line);
+            }
+            return dialogs;
+
+        } catch (IOException e) {
+            return null;
+        }
+    }
+
+    private String loadFile(String fileName) {
+        try {
+            String ret = "";
+            String line;
+            BufferedReader br = new BufferedReader(new FileReader("res/coreRepair/" + fileName));
+            while ((line = br.readLine()) != null) {
+                ret += line + "\n";
+            }
+            return ret;
+
+        } catch (IOException e) {
+            return "";
+        }
+    }
+
+    private ArrayList<String> loadChips() {
+        try {
+            ArrayList<String> chips = new ArrayList<>();
+            String line;
+            String chip = "";
+            BufferedReader br = new BufferedReader(new FileReader("res/coreRepair/chip.txt"));
+            while ((line = br.readLine()) != null) {
+                chip += line + "\n";
+
+                if(line.isEmpty()) {
+                    chips.add(chip);
+                    chip = "";
+                }
+            }
+            chips.add(chip);
+            return chips;
+
+        } catch (IOException e) {
+            return null;
+        }
     }
 }

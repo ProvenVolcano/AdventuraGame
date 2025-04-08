@@ -17,7 +17,7 @@ public class Engineer extends Character {
         super(file);
         this.player = player;
         neededItems = new ArrayList<>();
-        Collections.addAll(neededItems, "Screwdriver", "Blue cable", "Chip", "Yellow cable", "Red cable");
+        Collections.addAll(neededItems, "Screwdriver", "Blue cable", "Chip", "Red cable", "Yellow cable");
     }
 
     /**
@@ -32,16 +32,17 @@ public class Engineer extends Character {
                 return dialogs.get(0);
             case 1:
                 if (player.containsItem("Bandages")) {
+                    player.remove("Bandages");
                     dialogIndex++;
                 } else return dialogs.get(1);
             case 2:
                 dialogIndex++;
-                return dialogs.get(2) + neededItemsString() + ".";
+                return dialogs.get(2) + " " + neededItemsString() + ".";
             case 3:
                 if (hasAll()) {
                     dialogIndex++;
                     player.setHasEngineerItems(true);
-                } else return dialogs.get(3) + neededItemsString() + ".";
+                } else return dialogs.get(3) + " " + neededItemsString() + ".";
             case 4:
                 return dialogs.get(4);
         }
@@ -57,6 +58,7 @@ public class Engineer extends Character {
             if (player.containsItem(neededItems.get(i))) {
                 player.remove(neededItems.get(i));
                 neededItems.remove(neededItems.get(i));
+                i--;
             }
         }
         return neededItems.isEmpty();

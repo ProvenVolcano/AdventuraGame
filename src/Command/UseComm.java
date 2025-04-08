@@ -30,6 +30,7 @@ public class UseComm extends Command {
         }
 
         System.out.println(player.itemsString());
+        System.out.println("Item to use: ");
         String item = sc.nextLine();
         return player.useItem(item);
     }

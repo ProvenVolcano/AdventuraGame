@@ -26,7 +26,7 @@ public abstract class Character {
         dialogIndex = 0;
 
         try{
-            BufferedReader br = new BufferedReader(new FileReader("res\\characters\\" + fileName + ".txt"));
+            BufferedReader br = new BufferedReader(new FileReader("res/characters/" + fileName + ".txt"));
             name = br.readLine();
 
             String line;

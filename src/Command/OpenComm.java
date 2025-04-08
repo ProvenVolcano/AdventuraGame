@@ -30,6 +30,9 @@ public class OpenComm extends Command {
             return Text.color("Can't execute command while fighting an enemy\n" + player.damage(15), 'r');
         }
 
+        if(world.getCurrentRoom().getCrates().isEmpty()) {
+            return Text.color("No crates in this room", 'y');
+        }
         System.out.println(world.getCurrentRoom().cratesString());
         System.out.print("Crate to open: ");
         String crate = sc.nextLine();
