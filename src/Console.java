@@ -64,6 +64,10 @@ public class Console {
         sc.close();
     }
 
+    /**
+     * Loads the message that gets displayed on the start of the game
+     * @return - the message
+     */
     public String getFirstMessage() {
         try {
             String message = "";

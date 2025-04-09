@@ -241,6 +241,10 @@ public class Core extends Interactable {
         return false;
     }
 
+    /**
+     * Loads dialogs from a file
+     * @return - ArrayList of dialogs
+     */
     private ArrayList<String> loadDialogs() {
         try {
             ArrayList<String> dialogs = new ArrayList<>();
@@ -256,6 +260,11 @@ public class Core extends Interactable {
         }
     }
 
+    /**
+     * Loads String from a file
+     * @param fileName - name of the file
+     * @return - the loaded String
+     */
     private String loadFile(String fileName) {
         try {
             String ret = "";
@@ -271,6 +280,10 @@ public class Core extends Interactable {
         }
     }
 
+    /**
+     * Loads chip images
+     * @return - ArrayList of the string chip images
+     */
     private ArrayList<String> loadChips() {
         try {
             ArrayList<String> chips = new ArrayList<>();
